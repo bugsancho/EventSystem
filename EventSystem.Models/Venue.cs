@@ -15,6 +15,6 @@ namespace EventSystem.Models
 
         public int AvailableSeats { get; set; }
 
-
+        public string ImageUrl { get; set; }
     }
 }

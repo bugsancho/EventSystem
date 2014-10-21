@@ -37,7 +37,14 @@ ErrorMessage="The available seats field must be number between 1 and 10000" /><b
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <asp:Label runat="server" AssociatedControlID="FileUploadControl" CssClass="col-md-2 control-label">Image</asp:Label>
+            <div class="col-md-10">
+                <asp:FileUpload ID="FileUploadControl" runat="server" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
                 <asp:Button runat="server" OnClick="CreateVenue_Click" Text="Create" CssClass="btn btn-default" />
             </div>
         </div>
