@@ -88,7 +88,7 @@
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="/CreateVenue">Create venue</a></li>
+                                                <li><a href="/Venue/CreateVenue">Create venue</a></li>
                                                 <li><a href="/CreateEvent">Create event</a></li>
                                                 <li><a href="/Profile">Profile</a></li>
 
@@ -96,7 +96,6 @@
                                             </li>
                                         </ul>
                                     </li>
-
                                     <li>
                                         <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                     </li>
