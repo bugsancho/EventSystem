@@ -7,7 +7,6 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using EventSystem.Web.Models;
 using EventSystem.Data;
 using EventSystem.Models;
 

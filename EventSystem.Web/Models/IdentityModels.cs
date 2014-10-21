@@ -7,7 +7,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using EventSystem.Web.Models;
 using EventSystem.Models;
 
 namespace EventSystem.Web.Models
