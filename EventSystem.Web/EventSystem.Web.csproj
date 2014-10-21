@@ -352,10 +352,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\EventCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -382,6 +379,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EventSystem.Data\EventSystem.Data.csproj">
+      <Project>{12609a0c-b64e-424f-a176-d903b21df6e0}</Project>
+      <Name>EventSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSystem.Models\EventSystem.Models.csproj">
+      <Project>{c64eb99f-d0a4-4f1e-b2f3-391e5aa12eed}</Project>
+      <Name>EventSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

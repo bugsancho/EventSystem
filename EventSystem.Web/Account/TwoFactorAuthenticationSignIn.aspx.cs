@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using EventSystem.Web.Models;
+using EventSystem.Models;
 
 namespace EventSystem.Web.Account
 {

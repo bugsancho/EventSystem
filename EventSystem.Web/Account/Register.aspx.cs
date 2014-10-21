@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using EventSystem.Web.Models;
+using EventSystem.Models;
 
 namespace EventSystem.Web.Account
 {

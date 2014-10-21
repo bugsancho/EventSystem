@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EventSystem.Web.Models
+namespace EventSystem.Models
 {
     public enum EventCategory
     {
