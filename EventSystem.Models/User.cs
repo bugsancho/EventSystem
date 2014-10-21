@@ -9,8 +9,15 @@ using System.Threading.Tasks;
 
 namespace EventSystem.Models
 {
-   public class User : IdentityUser
+    public class User : IdentityUser
     {
+        private ICollection<Event> events;
+
+        public User()
+        {
+            this.events = new HashSet<Event>();
+        }
+
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -22,6 +29,22 @@ namespace EventSystem.Models
         public Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             return Task.FromResult(GenerateUserIdentity(manager));
+        }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public virtual ICollection<Event> Events
+        {
+            get
+            {
+                return this.events;
+            }
+            set
+            {
+                this.events = value;
+            }
         }
     }
 }

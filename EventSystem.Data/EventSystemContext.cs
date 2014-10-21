@@ -1,4 +1,5 @@
-﻿using EventSystem.Models;
+﻿using EventSystem.Data.Migrations;
+using EventSystem.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace EventSystem.Data
     {
         public EventSystemContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EventSystemContext, Configuration>());
         }
 
         public static EventSystemContext Create()
@@ -21,6 +23,7 @@ namespace EventSystem.Data
         }
 
         IDbSet<Event> Events { get; set; }
+
         IDbSet<Venue> Venues { get; set; }
     }
 }
