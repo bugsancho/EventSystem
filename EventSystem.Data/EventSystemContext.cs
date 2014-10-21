@@ -14,7 +14,6 @@ namespace EventSystem.Data
     {
         public EventSystemContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
-          //  Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EventSystemContext>());
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<EventSystemContext, Configuration>());
         }
 

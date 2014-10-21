@@ -82,8 +82,21 @@
                             <LoggedInTemplate>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a>
+                                        <ul class="nav navbar-nav">
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" href="" data-toggle="dropdown"><%: Context.User.Identity.GetUserName()  %>
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/CreateVenue">Create venue</a></li>
+                                                <li><a href="/CreateEvent">Create event</a></li>
+                                                <li><a href="/Profile">Profile</a></li>
+
+                                            </ul>
+                                            </li>
+                                        </ul>
                                     </li>
+
                                     <li>
                                         <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                     </li>
