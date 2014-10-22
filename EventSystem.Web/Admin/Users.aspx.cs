@@ -12,10 +12,6 @@ namespace EventSystem.Web.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (this.User == null || !this.User.Identity.IsAuthenticated)
-            {
-                Server.Transfer("~/Account/Login.aspx",false);
-            }
         }
 
         // The return type can be changed to IEnumerable, however to support

@@ -46,7 +46,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" runat="server" href="~/">Free Barters</a>
+                        <a class="navbar-brand" runat="server" href="~/">Ticket System</a>
                         <div>
                             <asp:Menu ID="NavigationMenu" runat="server"  EnableViewState="false" 
                                       IncludeStyleBlock="false" Orientation="Horizontal"
@@ -55,7 +55,8 @@
                                       StaticSelectedStyle-CssClass="active"
                                       DynamicMenuStyle-CssClass="dropdown-menu"
                                       DataSourceId="SiteMapDataSource"
-                                      StaticDisplayLevels="2">
+                                      StaticDisplayLevels="2"
+                                OnMenuItemDataBound="NavigationMenu_MenuItemDataBound">
                             </asp:Menu>
                             <asp:LoginView runat="server" ViewStateMode="Disabled">
                                 <AnonymousTemplate>
