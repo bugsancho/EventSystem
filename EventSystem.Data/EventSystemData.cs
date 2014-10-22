@@ -47,6 +47,14 @@
             }
         }
 
+        public IRepository<EventCategory> EventCategory 
+        {
+            get
+            {
+                return this.GetRepository<EventCategory>();
+            }
+        }
+
         public int SaveChanges()
         {
             return this.context.SaveChanges();

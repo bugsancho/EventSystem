@@ -25,5 +25,7 @@ namespace EventSystem.Data
         IDbSet<Event> Events { get; set; }
 
         IDbSet<Venue> Venues { get; set; }
+        
+        IDbSet<EventCategory> EventCategories { get; set; }
     }
 }

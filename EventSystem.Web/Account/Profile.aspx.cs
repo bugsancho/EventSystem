@@ -17,7 +17,6 @@ namespace EventSystem.Web.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             var user = this.Data.Users.Find(this.CurrentUserId);
             if (user == null)
             {
