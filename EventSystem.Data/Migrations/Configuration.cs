@@ -1,11 +1,13 @@
 namespace EventSystem.Data.Migrations
 {
+    using EventSystem.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EventSystem.Data.EventSystemContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EventSystemContext>
     {
         public Configuration()
         {
@@ -14,7 +16,7 @@ namespace EventSystem.Data.Migrations
             ContextKey = "EventSystem.Data.EventSystemContext";
         }
 
-        protected override void Seed(EventSystem.Data.EventSystemContext context)
+        protected override void Seed(EventSystemContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -28,6 +30,13 @@ namespace EventSystem.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            IList<EventCategory> defaultCategories = new List<EventCategory>();
+
+            defaultCategories.Add(new EventCategory() { Name = "Theatre" });
+            defaultCategories.Add(new EventCategory() { Name = "Concert" });
+            defaultCategories.Add(new EventCategory() { Name = "Birthday" });
+            defaultCategories.Add(new EventCategory() { Name = "Sport" });
         }
     }
 }
