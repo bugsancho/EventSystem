@@ -34,9 +34,39 @@
                 <td><%#: Item.Name %></td>
                 <td><%#: Item.Location %></td>
                 <td><%#: Item.AvailableSeats %></td>
-                <td><asp:HyperLink runat="server" NavigateUrl='<%#: "VenueDetails.aspx?ID="+ Item.Id %>'  Text="Details" CssClass="btn"></asp:HyperLink> </td>
+                <td>
+                    <asp:HyperLink runat="server" NavigateUrl='<%#: "VenueDetails.aspx?ID="+ Item.Id %>'  Text="Details" CssClass="btn btn-default"></asp:HyperLink> 
+                </td>
             </tr>
         </ItemTemplate>
+        <EditItemTemplate>
+            <tr runat="server">
+                <td runat="server">
+                    <asp:TextBox ID="TextBoxName" 
+                                 runat="server"
+                                 CssClass="form-control"
+                                 Text='<%#: BindItem.Name %>' />
+                </td>
+                <td runat="server">
+                    <asp:TextBox ID="TextBoxLocation" 
+                                 runat="server"
+                                 CssClass="form-control" 
+                                 Text='<%#: BindItem.Location %>' />
+                </td>
+                <td runat="server">
+                    <asp:TextBox ID="TextBoxAvailableSeats" 
+                                 runat="server" 
+                                 CssClass="form-control"
+                                 Text='<%#: BindItem.AvailableSeats %>' />
+                    <br />
+                    <asp:FileUpload ID="FileUploadControl" runat="server" />
+                </td>
+                <td runat="server">
+                    <asp:Button runat="server" ID="btnEdit" CssClass="btn btn-warning" Text="Update" CommandName="Update" />
+                    <asp:Button runat="server" ID="btnDelete" CssClass="btn btn-danger" Text="Cancel" CommandName="Cancel" />
+                </td>
+            </tr>
+        </EditItemTemplate>
     </asp:ListView>
     <asp:DataPager ID="DataPagerVenues" runat="server" PagedControlID="ListViewVenues" PageSize="5">
     <Fields>
