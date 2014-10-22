@@ -7,7 +7,7 @@
              <asp:BoundField DataField="Name" HeaderText="Name" />
              <asp:BoundField DataField="Location" HeaderText="Location" />
              <asp:BoundField DataField="AvailableSeats" HeaderText="Available seats" />
-             <asp:ImageField DataImageUrlField="ImageUrl" ControlStyle-Width="200px" ControlStyle-Height="100px">
+             <asp:ImageField DataImageUrlField="ImageUrl" ControlStyle-Width="300px" ControlStyle-Height="300px">
                  <ItemStyle  />
              </asp:ImageField>
         </Fields>

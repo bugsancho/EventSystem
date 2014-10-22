@@ -15,9 +15,14 @@ namespace EventSystem.Web
 
         }
 
-        public IEnumerable<EventSystem.Models.Venue> EventImagesContainer_GetData()
+        public IEnumerable<EventSystem.Models.Venue> VenueImagesContainer_GetData()
         {
              return this.Data.Venues.All();
+        }
+
+        public IEnumerable<EventSystem.Models.Event> EventImagesContainer_GetData()
+        {
+            return this.Data.Events.All();
         }
     }
 }

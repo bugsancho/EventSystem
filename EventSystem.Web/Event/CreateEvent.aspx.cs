@@ -2,6 +2,7 @@
 using EventSystem.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,12 +14,74 @@ namespace EventSystem.Web.Event
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.errorBox.Visible = false;
         }
 
         public void CreateEvent_Click(object sender, EventArgs e)
         {
-            // TODO: Implement this method
-            throw new NotImplementedException();
+            const string ImagePath = "/Content/Images/Event/";
+            string imageUrl = "";
+
+            Console.WriteLine();
+            try
+            {
+                if (FileUploadControl.PostedFile.ContentType == "image/jpeg" ||
+                    FileUploadControl.PostedFile.ContentType == "image/png")
+                {
+                    if (FileUploadControl.PostedFile.ContentLength < 512000)
+                    {
+                        EventSystem.Models.Event newEvent = new EventSystem.Models.Event();
+                        newEvent.Title = this.Title.Text;
+                        newEvent.Description = this.Description.Text;
+                        newEvent.Category = this.Data.EventCategories.Find(int.Parse(this.Categories.SelectedValue));
+                        newEvent.Venue = this.Data.Venues.Find(int.Parse(this.DropDownVenues.SelectedValue));
+                        newEvent.Price = decimal.Parse(this.Price.Text);
+                        newEvent.StartDate = DateTime.Parse(this.TextBoxStartDate.Text);
+                        newEvent.EndDate = DateTime.Parse(this.TextBoxEndDate.Text);
+
+                        var currentUserId = Microsoft.AspNet.Identity.IdentityExtensions.GetUserId(this.User.Identity);
+                        var currentUser = this.Data.Users.Find(currentUserId);
+
+                        newEvent.Host = currentUser;
+
+                        this.Data.Events.Add(newEvent);
+                        this.Data.SaveChanges();
+
+                        int id = newEvent.Id;
+
+                        string fileExtention = Path.GetExtension(FileUploadControl.FileName);
+                        imageUrl = ImagePath + id + fileExtention;
+                        FileUploadControl.SaveAs(Server.MapPath("~" + ImagePath) + id + fileExtention);
+
+                        // save file path to entity
+                        newEvent = this.Data.Events.All().FirstOrDefault(ev => ev.Id == id);
+                        newEvent.ImageUrl = imageUrl;
+                        this.Data.SaveChanges();
+                    }
+                    else
+                    {
+                        this.ErrorMessage.Text = "The file has to be less than 500 kb!";
+                        this.errorBox.Visible = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
+                    this.errorBox.Visible = true;
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
+                this.errorBox.Visible = true;
+                return;
+            }
+
+            // TODO: Add confirm message
+
+            Response.Redirect("/");
         }
 
         public IQueryable<EventCategory> DropDownListCategories_GetData()

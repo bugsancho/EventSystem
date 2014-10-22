@@ -1,13 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListAll.aspx.cs" Inherits="EventSystem.Web.Venues.ListAll" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ListView ID="ListViewVenues" runat="server" ItemType="EventSystem.Models.Venue" SelectMethod="ListViewVenues_GetData" DataKeyNames="Id">
+    <asp:ListView ID="ListViewVenues" runat="server" 
+        ItemType="EventSystem.Models.Venue" 
+        SelectMethod="ListViewVenues_GetData" 
+        DataKeyNames="Id">
         <LayoutTemplate>
             <table class="table table-striped">
                 <tr>
-                    <th>Name</th>
-                    <th>Location</th>
-                    <th>Available seats</th>
+                    <th>
+                        <asp:LinkButton runat="server" ID="SortByUsername"
+                                  CommandName="Sort" CommandArgument="Name">
+                            Name
+                        </asp:LinkButton>
+                    </th>
+                    <th><asp:LinkButton runat="server" ID="SortByLocation"
+                                  CommandName="Sort" CommandArgument="Location">
+                            Location
+                        </asp:LinkButton>
+                    </th>
+                    <th><asp:LinkButton runat="server" ID="SortByAvailableSeats"
+                                  CommandName="Sort" CommandArgument="AvailableSeats">
+                        Available seats
+                        </asp:LinkButton>
+                    </th>
                     <th></th>
                 </tr>
                 <tr id="itemPlaceholder" runat="server"></tr>

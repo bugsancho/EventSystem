@@ -168,6 +168,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Controls\ImageTile.ascx" />
     <Content Include="Event\CreateEvent.aspx" />
+    <Content Include="Event\EventDetails.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -372,9 +373,17 @@
     </Compile>
     <Compile Include="Event\CreateEvent.aspx.cs">
       <DependentUpon>CreateEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Event\CreateEvent.aspx.designer.cs">
       <DependentUpon>CreateEvent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Event\EventDetails.aspx.cs">
+      <DependentUpon>EventDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Event\EventDetails.aspx.designer.cs">
+      <DependentUpon>EventDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -430,6 +439,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Event\" />
     <Folder Include="Content\Images\Venue\" />
   </ItemGroup>
   <ItemGroup>
