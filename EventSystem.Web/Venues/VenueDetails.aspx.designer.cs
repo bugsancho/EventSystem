@@ -13,12 +13,12 @@ namespace EventSystem.Web.Venues {
     public partial class VenueDetails {
         
         /// <summary>
-        /// DetailsViewVenue control.
+        /// FormViewVenue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsViewVenue;
+        protected global::System.Web.UI.WebControls.FormView FormViewVenue;
     }
 }
