@@ -12,8 +12,6 @@ namespace EventSystem.Web.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            Console.WriteLine();
         }
 
         // The return type can be changed to IEnumerable, however to support

@@ -76,13 +76,13 @@ namespace EventSystem.Web.Event {
         protected global::System.Web.UI.WebControls.DropDownList DropDownVenues;
         
         /// <summary>
-        /// TextBoxStarDate control.
+        /// TextBoxStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxStarDate;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxStartDate;
         
         /// <summary>
         /// TextBoxEndDate control.

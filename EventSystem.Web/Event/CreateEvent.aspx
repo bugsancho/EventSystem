@@ -54,15 +54,17 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="TextBoxStarDate" CssClass="col-md-2 control-label">Star Date</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="TextBoxStartDate" CssClass="col-md-2 control-label">Start Date</asp:Label>
             <div>
-                <asp:TextBox ID="TextBoxStarDate" runat="server" TextMode="Date" />
+                <asp:TextBox ID="TextBoxStartDate" runat="server" ReadOnly="true"></asp:TextBox>
+                <img src="../Content/Images/calender.png" />
             </div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="TextBoxEndDate" CssClass="col-md-2 control-label">End Date</asp:Label>
             <div>
-                <asp:TextBox ID="TextBoxEndDate" runat="server" TextMode="Date" />
+                <asp:TextBox ID="TextBoxEndDate" runat="server" ReadOnly="true"></asp:TextBox>
+                <img src="../Content/Images/calender.png" />
             </div>
         </div>
         <div class="form-group">
@@ -77,4 +79,31 @@
             </div>
         </div>
     </div>
+    <script src="../Scripts/jquery.dynDateTime.min.js" type="text/javascript"></script>
+    <script src="../Scripts/calendar-en.min.js" type="text/javascript"></script>
+    <link href="../Styles/calendar-blue.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#<%=TextBoxStartDate.ClientID %>").dynDateTime({
+                showsTime: true,
+                ifFormat: "%Y/%m/%d %H:%M",
+                daFormat: "%l;%M %p, %e %m, %Y",
+                align: "BR",
+                electric: false,
+                singleClick: false,
+                displayArea: ".siblings('.dtcDisplayArea')",
+                button: ".next()"
+            });
+            $("#<%=TextBoxEndDate.ClientID %>").dynDateTime({
+                showsTime: true,
+                ifFormat: "%Y/%m/%d %H:%M",
+                daFormat: "%l;%M %p, %e %m, %Y",
+                align: "BR",
+                electric: false,
+                singleClick: false,
+                displayArea: ".siblings('.dtcDisplayArea')",
+                button: ".next()"
+            });
+        });
+    </script>
 </asp:Content>
