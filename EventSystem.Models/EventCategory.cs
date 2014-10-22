@@ -5,10 +5,11 @@ using System.Text;
 
 namespace EventSystem.Models
 {
-    public class EventCategory
+    public enum EventCategory
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
+        Theatre,
+        Concert,
+        Birthday,
+        Sport
     }
 }

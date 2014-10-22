@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EventSystem.Web.Admin {
+namespace EventSystem.Web.Venues {
     
     
-    public partial class Users {
+    public partial class VenueDetails {
         
         /// <summary>
-        /// ListView1 control.
+        /// DetailsViewVenue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListView1;
+        protected global::System.Web.UI.WebControls.DetailsView DetailsViewVenue;
     }
 }

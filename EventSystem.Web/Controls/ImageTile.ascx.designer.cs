@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EventSystem.Web.Admin {
+namespace EventSystem.Web.Controls {
     
     
-    public partial class Users {
+    public partial class ImageTile {
         
         /// <summary>
-        /// ListView1 control.
+        /// image control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListView1;
+        protected global::System.Web.UI.WebControls.ImageButton image;
     }
 }
