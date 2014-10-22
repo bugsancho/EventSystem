@@ -21,5 +21,7 @@
             </asp:DetailsView>
         </asp:Panel>
         <asp:Button  runat="server" ID="JoinEventBtn" OnClick="JoinEventBtn_Click" Text="Join" CssClass="btn btn-default"/>
+        <asp:TextBox runat="server" Id="TextBoxComment"/>
+        <asp:Button Text="Comment" runat="server" id="BtnSubmitComment" OnClick="BtnSubmitComment_Click"/>
     </asp:Panel>
 </asp:Content>

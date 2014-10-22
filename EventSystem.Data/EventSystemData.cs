@@ -46,6 +46,13 @@
                 return this.GetRepository<User>();
             }
         }
+          public IRepository<Comment> Comments
+        {
+            get
+            {
+                return this.GetRepository<Comment>();
+            }
+        }
 
         public IRepository<EventCategory> EventCategories
         {

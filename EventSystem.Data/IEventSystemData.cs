@@ -14,6 +14,8 @@ namespace EventSystem.Data
 
         IRepository<User> Users { get; }
 
+        IRepository<Comment> Comments { get; }
+
         int SaveChanges();
     }
 }

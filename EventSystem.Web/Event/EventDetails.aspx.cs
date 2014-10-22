@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using EventSystem.Models;
 
 namespace EventSystem.Web.Event
 {
@@ -38,10 +39,14 @@ namespace EventSystem.Web.Event
             if (!joined)
             {
                 this.JoinEventBtn.Visible = true;
+                this.BtnSubmitComment.Visible = false;
+                this.TextBoxComment.Visible = false;
             }
             else
             {
                 this.JoinEventBtn.Visible = false;
+                this.BtnSubmitComment.Visible = true;
+                this.TextBoxComment.Visible = true;
             }
         }
 
@@ -66,6 +71,20 @@ namespace EventSystem.Web.Event
             user.Events.Add(this.Event);
             this.Data.SaveChanges();
             this.Event.Attendants.Add(user);
+            this.Data.SaveChanges();
+        }
+
+        protected void BtnSubmitComment_Click(object sender, EventArgs e)
+        {
+             var currentUserId = this.User.Identity.GetUserId();
+            var user = this.Data.Users.Find(currentUserId);
+
+            var comment = new Comment();
+            comment.Date = DateTime.Now;
+            comment.Event = this.Event;
+            comment.User = user;
+            comment.Text = this.TextBoxComment.Text;
+            this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
         }
     }

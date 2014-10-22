@@ -8,6 +8,7 @@ namespace EventSystem.Models
     public class Event
     {
         private ICollection<User> attendants;
+        private ICollection<Comment> comments;
 
         public int Id { get; set; }
         
@@ -32,6 +33,7 @@ namespace EventSystem.Models
         public Event()
         {
             this.attendants = new HashSet<User>();
+            this.comments = new HashSet<Comment>();
         }
 
         public virtual ICollection<User> Attendants
@@ -43,6 +45,17 @@ namespace EventSystem.Models
             set
             {
                 this.attendants = value;
+            }
+        }
+         public virtual ICollection<Comment> Comments
+        {
+            get
+            {
+                return this.comments;
+            }
+            set
+            {
+                this.comments = value;
             }
         }
 

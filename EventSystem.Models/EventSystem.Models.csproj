@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comment.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
