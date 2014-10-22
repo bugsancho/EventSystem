@@ -108,11 +108,11 @@
             <div class="container body-content">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
-                <hr />
-                <footer>
+            </div>
+            <hr />
+                <footer class="col-md-5">
                     <p>&copy; <%: DateTime.Now.Year %> Event System</p>
                 </footer>
-            </div>
         </form>
     </body>
 </html>
