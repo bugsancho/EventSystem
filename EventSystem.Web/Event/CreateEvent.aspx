@@ -54,9 +54,9 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="TextBoxStarDate" CssClass="col-md-2 control-label">Star Date</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="TextBoxStartDate" CssClass="col-md-2 control-label">Start Date</asp:Label>
             <div>
-                <asp:TextBox ID="TextBoxStarDate" runat="server" TextMode="Date" />
+                <asp:TextBox ID="TextBoxStartDate" runat="server" TextMode="Date"/>
             </div>
         </div>
         <div class="form-group">
