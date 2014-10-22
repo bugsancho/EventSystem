@@ -17,6 +17,18 @@
             }
         }
 
+        public string AdditionalInfo
+        {
+            get
+            {
+                return ViewState["AdditionalInfo"] == null ? "" : ViewState["AdditionalInfo"].ToString();
+            }
+            set
+            {
+                ViewState["AdditionalInfo"] = value;
+            }
+        }
+
         public string ImageUrl
         {
             get
