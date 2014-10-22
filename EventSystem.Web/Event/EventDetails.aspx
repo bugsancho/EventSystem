@@ -20,5 +20,6 @@
                 </Fields>
             </asp:DetailsView>
         </asp:Panel>
+        <asp:Button  runat="server" ID="JoinEventBtn" OnClick="JoinEventBtn_Click" Text="Join" CssClass="btn btn-default"/>
     </asp:Panel>
 </asp:Content>
