@@ -47,7 +47,7 @@
             }
         }
 
-        public IRepository<EventCategory> EventCategory 
+        public IRepository<EventCategory> EventCategories
         {
             get
             {

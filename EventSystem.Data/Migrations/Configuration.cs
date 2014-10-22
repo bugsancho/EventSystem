@@ -18,25 +18,19 @@ namespace EventSystem.Data.Migrations
 
         protected override void Seed(EventSystemContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (!context.EventCategories.Any())
+            {
+                IList<EventCategory> defaultCategories = new List<EventCategory>();
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                defaultCategories.Add(new EventCategory() { Name = "Theatre" });
+                defaultCategories.Add(new EventCategory() { Name = "Concert" });
+                defaultCategories.Add(new EventCategory() { Name = "Birthday" });
+                defaultCategories.Add(new EventCategory() { Name = "Sport" });
 
-            IList<EventCategory> defaultCategories = new List<EventCategory>();
+                foreach (EventCategory eventCat in defaultCategories)
+                    context.EventCategories.Add(eventCat);
+            }
 
-            defaultCategories.Add(new EventCategory() { Name = "Theatre" });
-            defaultCategories.Add(new EventCategory() { Name = "Concert" });
-            defaultCategories.Add(new EventCategory() { Name = "Birthday" });
-            defaultCategories.Add(new EventCategory() { Name = "Sport" });
         }
     }
 }
