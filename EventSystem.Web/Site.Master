@@ -58,7 +58,7 @@
                                 <a runat="server" href="~/About">About</a>
                             </li>
                             <li>
-                                <a runat="server" href="http://paypal.com">Contact</a>
+                                <a runat="server" href="~/Venues/ListAll">All Venues</a>
                             </li>
                             <asp:LoginView runat="server" ViewStateMode="Disabled">
                                 <LoggedInTemplate>
@@ -88,7 +88,7 @@
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="/Venue/CreateVenue">Create venue</a></li>
+                                                <li><a href="/Venues/CreateVenue">Create venue</a></li>
                                                 <li><a href="/CreateEvent">Create event</a></li>
                                                 <li><a href="/Profile">Profile</a></li>
 
