@@ -16,7 +16,7 @@
                     <asp:Repeater ID="Repeater1" runat="server" ItemType="EventSystem.Models.Event"  ViewStateMode="Enabled" SelectMethod="EventImagesContainer_GetData">
                         <ItemTemplate>
                             <My:UserInfoBoxControl runat="server" 
-                                Target='<%# "~/Events/EventDetails?id="+Item.Id %>' 
+                                Target='<%# "~/Event/EventDetails?id="+Item.Id %>' 
                                 Info='<%# ""+Item.Title %>' 
                                 ImageUrl='<%#:Item.ImageUrl %>' 
                                 AdditionalInfo='<%#: Item.StartDate.ToString("dd-MM-yyyy") %>' 
