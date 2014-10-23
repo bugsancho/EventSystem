@@ -25,7 +25,7 @@ namespace EventSystem.Web.Event
 
             DetailsViewEvents.DataSource = eventData;
             DetailsViewEvents.DataBind();
-
+            
             this.JoinEventBtn.Visible = CanEventBeJoined(eventData[0]);
             this.BtnSubmitComment.Visible = CanEventBeCommented();
             this.TextBoxComment.Visible = CanEventBeCommented();

@@ -29,7 +29,7 @@ namespace EventSystem.Web.Event
                 {
                     if (FileUploadControl.PostedFile.ContentLength < 512000)
                     {
-                        if ( DateTime.Parse(Request.Form[TextBoxStartDate.UniqueID]) > DateTime.Parse(Request.Form[TextBoxEndDate.UniqueID]))
+                        if (DateTime.Parse(Request.Form[TextBoxStartDate.UniqueID]) > DateTime.Parse(Request.Form[TextBoxEndDate.UniqueID]))
                         {
                             throw new Exception("Start date can not be after end date");
                         }
@@ -96,13 +96,14 @@ namespace EventSystem.Web.Event
 
         public IQueryable<EventSystem.Models.Venue> DropDownListVenues_GetData()
         {
-            var data = this.Data.Venues.All().ToList().AsQueryable();
+            var data = this.Data.Venues.All()
+                           .Where(v => v.Host.Id == this.LoggedUser.Id)
+                           .ToList().AsQueryable();
             return data;
         }
 
         protected void BtnSave_Click(object sender, EventArgs e)
         {
-            
         }
     }
 }
