@@ -88,7 +88,8 @@ namespace EventSystem.Web.Event
                 Price = x.Price,
                 ImageUrl = x.ImageUrl,
                 Category = x.Category.Name,
-                Host = x.Host.UserName + " (" + x.Host.FirstName + " " + x.Host.LastName + ")"
+                Host = x.Host.UserName + " (" + x.Host.FirstName + " " + x.Host.LastName + ")",
+                HostProfileLink = "~/Account/Profile?id=" + x.Host.Id
             }).FirstOrDefault();
         }
 

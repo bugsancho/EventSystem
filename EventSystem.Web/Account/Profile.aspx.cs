@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Entity;
-
 using Microsoft.AspNet.Identity;
 using System.IO;
 
@@ -20,12 +19,28 @@ namespace EventSystem.Web.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             this.errorBox.Visible = false;
+
+            var requestUserId = this.Request["id"];
+            if (requestUserId != null)
+            { 
+                this.ListViewMyEvents.Visible = false;
+                this.ListViewMyVenues.Visible = false;
+                this.DataPager1.Visible = false;
+                this.DataPagerVenues.Visible = false; 
+                Button btnEdit = FormViewProfile.FindControl("btnEdit") as Button;
+                btnEdit.Visible = false;
+            }
         }
 
         // The id parameter should match the DataKeyNames value set on the control
         // or be decorated with a value provider attribute, e.g. [QueryString]int id
         public EventSystem.Models.User FormViewProfile_GetItem(string id)
         {
+            var requestUserId = this.Request["id"];
+            if (requestUserId != null)
+            {
+                return this.Data.Users.Find(requestUserId);
+            }
             var user = this.Data.Users.Find(Context.User.Identity.GetUserId());
             return user;
         }
@@ -90,7 +105,6 @@ namespace EventSystem.Web.Account
             {
                 this.Data.SaveChanges();
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
-
             }
         }
 
@@ -122,7 +136,6 @@ namespace EventSystem.Web.Account
             if (ModelState.IsValid)
             {
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
-
             }
         }
 
@@ -154,7 +167,6 @@ namespace EventSystem.Web.Account
             if (ModelState.IsValid)
             {
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
-
             }
         }
     }
