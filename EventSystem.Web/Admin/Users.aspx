@@ -5,6 +5,13 @@ Inherits="EventSystem.Web.Admin.Users"
 MasterPageFile="~/Site.Master" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <p class="alert alert-danger" id="errorBox" runat="server">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <asp:Literal runat="server" ID="ErrorMessage" />
+    </p>
+
+    <h2 class="text-center">All users</h2>
+    <br />
     <asp:ListView runat="server" ID="ListView1" 
                   ItemType="EventSystem.Models.User" 
                   DataKeyNames="Id"
@@ -30,8 +37,10 @@ MasterPageFile="~/Site.Master" %>
                         <asp:LinkButton runat="server" ID="SortByEmail" CommandName="Sort"
                                         CommandArgument="Email">Email</asp:LinkButton>
                     </th>
-                    <th runat="server" class="text-center"><asp:LinkButton runat="server" ID="SortByPhoneNumber" CommandName="Sort"
-                                        CommandArgument="PhoneNumber">Phone Number</asp:LinkButton></th>
+                    <th runat="server" class="text-center">
+                        <asp:LinkButton runat="server" ID="SortByPhoneNumber" CommandName="Sort"
+                                        CommandArgument="PhoneNumber">Phone Number</asp:LinkButton>
+                    </th>
                     <th runat="server" class="text-center">Action</th>
                 </tr>
                 <tr runat="server" id="itemPlaceholder" >
@@ -52,9 +61,10 @@ MasterPageFile="~/Site.Master" %>
         <ItemTemplate>
             <tr runat="server">
                 <td runat="server">
-                    <asp:Label ID="UserName" 
-                               runat="server" 
-                               Text='<%#: Item.UserName %>' />
+                    <asp:HyperLink ID="UserName" 
+                                   NavigateUrl='<%#: "~/Account/Profile?id="+ Item.Id %>'
+                                   runat="server" 
+                                   Text='<%#: Item.UserName %>' />
                 </td>
                 <td runat="server">
                     <asp:Label ID="FirstName" 
@@ -86,10 +96,10 @@ MasterPageFile="~/Site.Master" %>
             <tr runat="server">
                 <td runat="server">
                     <asp:TextBox ID="Label3" 
-                               runat="server"
-                               Enabled="false"
-                               CssClass="form-control"
-                               Text='<%#: BindItem.UserName %>' />
+                                 runat="server"
+                                 Enabled="false"
+                                 CssClass="form-control"
+                                 Text='<%#: BindItem.UserName %>' />
                 </td>
                 <td runat="server">
                     <asp:TextBox ID="FirstName" 

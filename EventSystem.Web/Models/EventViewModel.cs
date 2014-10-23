@@ -9,6 +9,7 @@ namespace EventSystem.Web.Models
     public class EventViewModel
     {
         public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -28,5 +29,7 @@ namespace EventSystem.Web.Models
         public string ImageUrl { get; set; }
 
         public string Host { get; set; }
+
+        public string HostProfileLink { get; set; }
     }
 }
