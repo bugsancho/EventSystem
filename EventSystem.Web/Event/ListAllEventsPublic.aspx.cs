@@ -12,7 +12,6 @@ namespace EventSystem.Web.Event
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         public IQueryable<EventSystem.Models.Event> ListView1_GetData()
@@ -21,11 +20,11 @@ namespace EventSystem.Web.Event
 
             if (idStr == null)
             {
-                return this.Data.Events.All();
+                return this.Data.Events.All().Where(e => e.EndDate > DateTime.Now);
             }
             else
             {
-                return this.Data.Events.All().Where(e => e.Title.Contains(idStr));
+                return this.Data.Events.All().Where(e => e.Title.Contains(idStr) && e.EndDate > DateTime.Now);
             }
         }
 

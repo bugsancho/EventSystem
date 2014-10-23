@@ -7,6 +7,8 @@ namespace EventSystem.Models
 {
     public class Venue
     {
+        private ICollection<Event> events;
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -17,7 +19,23 @@ namespace EventSystem.Models
 
         public string ImageUrl { get; set; }
 
-
         public virtual User Host { get; set; }
+
+        public Venue()
+        {
+            this.events = new HashSet<Event>();
+        }
+
+        public virtual ICollection<Event> Events
+        {
+            get
+            {
+                return this.events;
+            }
+            set
+            {
+                this.events = value;
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@
     using System.Web.UI.WebControls;
     using EventSystem.Web.Models;
     using System.IO;
+    using EventSystem.Web.Helpers;
 
     public partial class ListAllEvents : PageBase
     {
@@ -60,9 +61,7 @@
                 ModelState.AddModelError("", String.Format("Venue with id {0} was not found", id));
                 return;
             }
-
-            this.Data.Events.Delete(item);
-            this.Data.SaveChanges();
+            DeletionHelper.DeleteEvent(item.Id);
         }
     }
 }

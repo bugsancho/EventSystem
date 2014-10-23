@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using EventSystem.Web.Models;
 using System.IO;
+using EventSystem.Web.Helpers;
 
 namespace EventSystem.Web.Venues
 {
@@ -45,7 +46,7 @@ namespace EventSystem.Web.Venues
             {
                 string fileExtention = Path.GetExtension(fileUploadControl.FileName);
                 fileUploadControl.SaveAs(Server.MapPath(ImagePath) + id + fileExtention);
-            }            
+            }
 
             if (ModelState.IsValid)
             {
@@ -65,9 +66,7 @@ namespace EventSystem.Web.Venues
                 ModelState.AddModelError("", String.Format("Venue with id {0} was not found", id));
                 return;
             }
-
-            this.Data.Venues.Delete(item);
-            this.Data.SaveChanges();
-        }        
+            DeletionHelper.DeleteVenue(item.Id);
+        }
     }
 }

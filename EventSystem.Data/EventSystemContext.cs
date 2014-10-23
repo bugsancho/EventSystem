@@ -22,6 +22,7 @@ namespace EventSystem.Data
             return new EventSystemContext();
         }
 
+        
         public IDbSet<Event> Events { get; set; }
 
         public IDbSet<Venue> Venues { get; set; }
