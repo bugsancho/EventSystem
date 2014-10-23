@@ -20,13 +20,14 @@ namespace EventSystem.Models
 
         public DateTime EndDate { get; set; }
 
-        public Venue Venue { get; set; }
+        public virtual Venue Venue { get; set; }
 
-        public EventCategory Category { get; set; }
+        public virtual EventCategory Category { get; set; }
 
         public int PurchasedTickets { get; set; }
 
-        public User Host { get; set; }
+
+        public virtual User Host { get; set; }
 
         public Decimal Price { get; set; }
 
@@ -47,7 +48,8 @@ namespace EventSystem.Models
                 this.attendants = value;
             }
         }
-         public virtual ICollection<Comment> Comments
+
+        public virtual ICollection<Comment> Comments
         {
             get
             {

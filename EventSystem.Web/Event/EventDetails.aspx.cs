@@ -26,19 +26,24 @@ namespace EventSystem.Web.Event
             DetailsViewEvents.DataSource = eventData;
             DetailsViewEvents.DataBind();
 
-            this.JoinEventBtn.Visible = CanEventBeJoined();
+            this.JoinEventBtn.Visible = CanEventBeJoined(eventData[0]);
             this.BtnSubmitComment.Visible = CanEventBeCommented();
             this.TextBoxComment.Visible = CanEventBeCommented();
         }
 
-        private bool CanEventBeJoined()
-        {   
+        private bool CanEventBeJoined(EventViewModel ev)
+        { 
             if (!this.User.Identity.IsAuthenticated)
             {
                 return false;
             }
+            
+            if (ev.TicketsLeft <= 0)
+            {
+                return false;
+            }
 
-            return !this.Event.Attendants.Contains(this.LoggedUser);
+            return !IsEventJoinedByCurrentUser();
         }
 
         private bool CanEventBeCommented()
@@ -48,7 +53,25 @@ namespace EventSystem.Web.Event
                 return false;
             }
 
-            return this.Event.Attendants.Contains(this.LoggedUser);
+            return IsEventJoinedByCurrentUser();
+        }
+
+        private bool IsEventJoinedByCurrentUser()
+        {
+            if (this.Event.Host.Id == this.LoggedUser.Id)
+            {
+                return true;    
+            }
+
+            var userEvents = this.LoggedUser.Events;
+            foreach (var ev in userEvents)
+            {
+                if (ev.Id == this.Event.Id)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public EventViewModel DetailsViewEvent_GetEventInfo()
@@ -73,7 +96,8 @@ namespace EventSystem.Web.Event
         {
             int id = int.Parse(this.Request["id"]);
 
-            return this.Data.Events.Find(id);
+            var ev = this.Data.Events.Find(id);
+            return ev;
         }
 
         protected void JoinEventBtn_Click(object sender, EventArgs e)
