@@ -29,6 +29,11 @@ namespace EventSystem.Web.Event
                 {
                     if (FileUploadControl.PostedFile.ContentLength < 512000)
                     {
+                        if ( DateTime.Parse(Request.Form[TextBoxStartDate.UniqueID]) > DateTime.Parse(Request.Form[TextBoxEndDate.UniqueID]))
+                        {
+                            throw new Exception("Start date can not be after end date");
+                        }
+
                         EventSystem.Models.Event newEvent = new EventSystem.Models.Event();
                         newEvent.Title = this.Title.Text;
                         newEvent.Description = this.Description.Text;
@@ -73,11 +78,13 @@ namespace EventSystem.Web.Event
             }
             catch (Exception ex)
             {
-                this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
+                this.ErrorMessage.Text = "Error while trying to create new event: " + ex.Message;
                 this.errorBox.Visible = true;
                 return;
             }
-            
+
+            // TODO: Add confirm message
+
             Response.Redirect("/");
         }
 
