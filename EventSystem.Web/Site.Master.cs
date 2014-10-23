@@ -58,8 +58,8 @@ namespace EventSystem.Web
             else
             {
                 // Validate the Anti-XSRF token
-                if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
-                    || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
+                if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue ||
+                    (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
                 {
                     throw new InvalidOperationException("Validation of Anti-XSRF token failed.");
                 }
@@ -74,6 +74,36 @@ namespace EventSystem.Web
         {
             Context.GetOwinContext().Authentication.SignOut();
         }
-    }
 
+        protected void NavigationMenu_MenuItemDataBound(object sender, MenuEventArgs e)
+        {
+            if (ShouldRemoveItem(e.Item.Text))
+            {
+                e.Item.Parent.ChildItems.Remove(e.Item);
+            }
+        }
+
+        private bool ShouldRemoveItem(string menuText)
+        {
+            var currentUser = HttpContext.Current.User;
+            if (menuText == "Logout" && currentUser.Identity.IsAuthenticated)
+            {
+                return true;
+            }
+            if (menuText == "Login" && !currentUser.Identity.IsAuthenticated)
+            {
+                return true;
+            }
+            if (menuText == "Register" && !currentUser.Identity.IsAuthenticated)
+            {
+                return true;
+            }
+            if (menuText == "Admin" && !currentUser.IsInRole("admin"))
+            {
+                return true;
+            }
+            
+            return false;
+        }
+    }
 }
