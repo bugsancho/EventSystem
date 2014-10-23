@@ -23,6 +23,13 @@ namespace EventSystem.Web.Venue
             const string ImagePath = "/Content/Images/Venue/";
             string imageUrl = "";
 
+            if (string.IsNullOrEmpty(FileUploadControl.FileName))
+            {
+                this.ErrorMessage.Text = "Image is required!";
+                this.errorBox.Visible = true;
+                return;
+            }
+
             try
             {
                 if (FileUploadControl.PostedFile.ContentType == "image/jpeg" ||
@@ -34,6 +41,7 @@ namespace EventSystem.Web.Venue
                         newVenue.Name = this.Name.Text;
                         newVenue.Location = this.Location.Text;
                         newVenue.AvailableSeats = int.Parse(this.AvailableSeats.Text);
+                        newVenue.Host = this.LoggedUser;
 
                         this.Data.Venues.Add(newVenue);
                         this.Data.SaveChanges();
@@ -70,8 +78,6 @@ namespace EventSystem.Web.Venue
                 this.errorBox.Visible = true;
                 return;
             }
-
-            // TODO: Add confirm message
 
             Response.Redirect("/");
         }

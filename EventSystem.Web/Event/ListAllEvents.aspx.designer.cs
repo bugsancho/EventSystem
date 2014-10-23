@@ -7,36 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EventSystem.Web.Venues {
+namespace EventSystem.Web.Event {
     
     
-    public partial class VenueDetails {
+    public partial class ListAllEvents {
         
         /// <summary>
-        /// errorBox control.
+        /// ListViewVenues control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorBox;
+        protected global::System.Web.UI.WebControls.ListView ListViewVenues;
         
         /// <summary>
-        /// ErrorMessage control.
+        /// DataPagerVenues control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
-        
-        /// <summary>
-        /// FormViewVenue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormViewVenue;
+        protected global::System.Web.UI.WebControls.DataPager DataPagerVenues;
     }
 }
