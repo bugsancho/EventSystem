@@ -17,12 +17,13 @@ namespace EventSystem.Web
 
         public IEnumerable<EventSystem.Models.Venue> VenueImagesContainer_GetData()
         {
-             return this.Data.Venues.All();
+            return this.Data.Venues.All().Take(4);
         }
 
         public IEnumerable<EventSystem.Models.Event> EventImagesContainer_GetData()
         {
-            return this.Data.Events.All();
+            DateTime currentDate = DateTime.Now;
+            return this.Data.Events.All().Where(d => d.EndDate >= currentDate).Take(4);
         }
     }
 }
