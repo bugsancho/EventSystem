@@ -82,7 +82,9 @@ namespace EventSystem.Web.Event
                 this.errorBox.Visible = true;
                 return;
             }
-            
+
+            // TODO: Add confirm message
+
             Response.Redirect("/");
         }
 

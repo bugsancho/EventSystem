@@ -44,7 +44,6 @@ namespace EventSystem.Web.Event
         public EventViewModel DetailsViewEvent_GetEventInfo()
         {
             int id = int.Parse(this.Request["id"]);
-
             return this.Data.Events.All().Where(x => x.Id == id).Select(x => new EventViewModel
             {
                 Title = x.Title,
@@ -91,6 +90,16 @@ namespace EventSystem.Web.Event
             comment.Text = this.TextBoxComment.Text;
             this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
+
+            Response.Redirect(Request.RawUrl);
+        }
+        
+        public IQueryable<EventSystem.Models.Comment> CommentsPanel_GetData()
+        {
+            var comments = this.Data.Events.All()
+                               .Where(e => e.Id == this.Event.Id)
+                               .Select(e => e.Comments);
+            return comments.FirstOrDefault().AsQueryable();
         }
     }
 }
