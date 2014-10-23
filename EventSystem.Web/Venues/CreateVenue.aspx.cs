@@ -34,6 +34,7 @@ namespace EventSystem.Web.Venue
                         newVenue.Name = this.Name.Text;
                         newVenue.Location = this.Location.Text;
                         newVenue.AvailableSeats = int.Parse(this.AvailableSeats.Text);
+                        newVenue.Host = this.LoggedUser;
 
                         this.Data.Venues.Add(newVenue);
                         this.Data.SaveChanges();
@@ -70,8 +71,6 @@ namespace EventSystem.Web.Venue
                 this.errorBox.Visible = true;
                 return;
             }
-
-            // TODO: Add confirm message
 
             Response.Redirect("/");
         }

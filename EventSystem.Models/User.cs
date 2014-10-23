@@ -12,10 +12,12 @@ namespace EventSystem.Models
     public class User : IdentityUser
     {
         private ICollection<Event> events;
+        private ICollection<Venue> venues;
 
         public User()
         {
             this.events = new HashSet<Event>();
+            this.venues = new HashSet<Venue>();
         }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
@@ -35,6 +37,17 @@ namespace EventSystem.Models
 
         public string LastName { get; set; }
 
+        public string ProfileImageUrl { get; set; }
+
+        public string GetProfileImageOrDefault()
+        {
+            if (String.IsNullOrWhiteSpace(this.ProfileImageUrl))
+            {
+                return "/Content/Images/profile-default.png";
+            }
+            return this.ProfileImageUrl;
+        }
+
         public virtual ICollection<Event> Events
         {
             get
@@ -44,6 +57,18 @@ namespace EventSystem.Models
             set
             {
                 this.events = value;
+            }
+        }
+
+        public virtual ICollection<Venue> Venues
+        {
+            get
+            {
+                return this.venues;
+            }
+            set
+            {
+                this.venues = value;
             }
         }
     }

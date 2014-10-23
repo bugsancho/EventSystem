@@ -54,6 +54,16 @@
             </div>
         </div>
         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="PhoneNumber" CssClass="col-md-2 control-label">Phone Number</asp:Label>
+            <asp:TextBox runat="server" ID="PhoneNumber" CssClass="form-control" />
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="FileUploadControl" CssClass="col-md-2 control-label">Profile Image</asp:Label>
+            <div class="col-md-10">
+                <asp:FileUpload ID="FileUploadControl" runat="server" />
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
             </div>
