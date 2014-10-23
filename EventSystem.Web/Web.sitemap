@@ -4,14 +4,14 @@
     <siteMapNode title="About" description="About Page" url="~/About.aspx" />
     <siteMapNode title="Admin" description="Site administration" roles="admin">
       <siteMapNode title="Users" description="Administer users" url="~/Admin/Users.aspx"/>
+      <siteMapNode title="All Events" description="All registered events" url="~/Admin/ListAllEvents.aspx"/>
+      <siteMapNode title="All Venues" description="All registered venues" url="~/Admin/ListAll.aspx"/>
     </siteMapNode>
     <siteMapNode title="Events" description="Site administration" roles="admin">
-      <siteMapNode title="Create" description="Create a new event" url="~/Event/CreateEvent.aspx"/>
-      <siteMapNode title="All Events" description="All registered events" url="~/Event/ListAllEvents.aspx"/>
+      <siteMapNode title="Create" description="Create a new event" url="~/Event/CreateEvent.aspx"/>      
     </siteMapNode>
     <siteMapNode title="Venues" description="Site administration" roles="admin">
-      <siteMapNode title="Create" description="Register a new venue" url="~/Venues/CreateVenue.aspx"/>
-      <siteMapNode title="All Venues" description="All registered venues" url="~/Venues/ListAll.aspx"/>
+      <siteMapNode title="Create" description="Register a new venue" url="~/Venues/CreateVenue.aspx"/>      
     </siteMapNode>
   </siteMapNode>
 </siteMap>

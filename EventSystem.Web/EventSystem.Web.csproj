@@ -172,7 +172,8 @@
     <Content Include="Controls\ImageTile.ascx" />
     <Content Include="Event\CreateEvent.aspx" />
     <Content Include="Event\EventDetails.aspx" />
-    <Content Include="Event\ListAllEvents.aspx" />
+    <Content Include="Admin\ListAllEvents.aspx" />
+    <Content Include="Event\ListAllEventsPublic.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -217,7 +218,7 @@
     <Content Include="Site.Master" />
     <Content Include="Styles\calendar-blue.css" />
     <Content Include="Venues\CreateVenue.aspx" />
-    <Content Include="Venues\ListAll.aspx" />
+    <Content Include="Admin\ListAll.aspx" />
     <Content Include="Venues\VenueDetails.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -399,12 +400,19 @@
     <Compile Include="Event\EventDetails.aspx.designer.cs">
       <DependentUpon>EventDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Event\ListAllEvents.aspx.cs">
+    <Compile Include="Admin\ListAllEvents.aspx.cs">
       <DependentUpon>ListAllEvents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Event\ListAllEvents.aspx.designer.cs">
+    <Compile Include="Admin\ListAllEvents.aspx.designer.cs">
       <DependentUpon>ListAllEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Event\ListAllEventsPublic.aspx.cs">
+      <DependentUpon>ListAllEventsPublic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Event\ListAllEventsPublic.aspx.designer.cs">
+      <DependentUpon>ListAllEventsPublic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -438,11 +446,11 @@
     <Compile Include="Venues\CreateVenue.aspx.designer.cs">
       <DependentUpon>CreateVenue.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Venues\ListAll.aspx.cs">
+    <Compile Include="Admin\ListAll.aspx.cs">
       <DependentUpon>ListAll.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Venues\ListAll.aspx.designer.cs">
+    <Compile Include="Admin\ListAll.aspx.designer.cs">
       <DependentUpon>ListAll.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venues\VenueDetails.aspx.cs">

@@ -19,7 +19,7 @@ namespace EventSystem.Web.Venues
             int venueId = int.Parse(this.Request["id"]);
             var venue = this.Data.Venues.Find(venueId);
 
-            if (venue.Host == null && !this.User.IsInRole("Administrator"))
+            if (venue.Host == null && !this.User.IsInRole("admin"))
             {
                 Button btnEdit = FormViewVenue.FindControl("btnEdit") as Button;
                 btnEdit.Visible = false;
