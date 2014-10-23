@@ -14,6 +14,19 @@ namespace EventSystem.Web.Venues
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int venueId = int.Parse(this.Request["id"]);
+            var venue = this.Data.Venues.Find(venueId);
+
+            if (venue.Host == null)
+            {
+                Button btnEdit = FormViewVenue.FindControl("btnEdit") as Button;
+                btnEdit.Visible = false;
+            }
+        }
+
+        protected void Page_Rnder(object sender, EventArgs e)
+        {
+
         }
 
         public object FormViewVenue_GetItem()

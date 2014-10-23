@@ -7,6 +7,7 @@
     </siteMapNode>
     <siteMapNode title="Events" description="Site administration" roles="admin">
       <siteMapNode title="Create" description="Create a new event" url="~/Event/CreateEvent.aspx"/>
+      <siteMapNode title="All Events" description="All registered events" url="~/Event/ListAllEvents.aspx"/>
     </siteMapNode>
     <siteMapNode title="Venues" description="Site administration" roles="admin">
       <siteMapNode title="Create" description="Register a new venue" url="~/Venues/CreateVenue.aspx"/>
