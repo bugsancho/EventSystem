@@ -23,7 +23,7 @@ namespace EventSystem.Web
         public IEnumerable<EventSystem.Models.Event> EventImagesContainer_GetData()
         {
             DateTime currentDate = DateTime.Now;
-            return this.Data.Events.All().Where(d => d.EndDate >= currentDate).Take(4);
+            return this.Data.Events.All().Where(d => d.EndDate >= currentDate).OrderBy(d => d.StartDate).Take(4);
         }
     }
 }
