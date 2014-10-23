@@ -173,6 +173,7 @@
     <Content Include="Event\CreateEvent.aspx" />
     <Content Include="Event\EventDetails.aspx" />
     <Content Include="Event\ListAllEvents.aspx" />
+    <Content Include="Event\ListAllEventsPublic.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -405,6 +406,13 @@
     </Compile>
     <Compile Include="Event\ListAllEvents.aspx.designer.cs">
       <DependentUpon>ListAllEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Event\ListAllEventsPublic.aspx.cs">
+      <DependentUpon>ListAllEventsPublic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Event\ListAllEventsPublic.aspx.designer.cs">
+      <DependentUpon>ListAllEventsPublic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
