@@ -37,6 +37,17 @@ namespace EventSystem.Models
 
         public string LastName { get; set; }
 
+        public string ProfileImageUrl { get; set; }
+
+        public string GetProfileImageOrDefault()
+        {
+            if (String.IsNullOrWhiteSpace(this.ProfileImageUrl))
+            {
+                return "/Content/Images/profile-default.png";
+            }
+            return this.ProfileImageUrl;
+        }
+
         public virtual ICollection<Event> Events
         {
             get

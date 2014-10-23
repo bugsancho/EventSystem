@@ -167,6 +167,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\calender.png" />
+    <Content Include="Content\Images\profile-default.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Controls\ImageTile.ascx" />
     <Content Include="Event\CreateEvent.aspx" />
@@ -408,10 +409,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EventViewModel.cs" />
     <Compile Include="Models\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\VenueViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -460,6 +463,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Event\" />
+    <Folder Include="Content\Images\Profile\" />
     <Folder Include="Content\Images\Venue\" />
   </ItemGroup>
   <ItemGroup>
