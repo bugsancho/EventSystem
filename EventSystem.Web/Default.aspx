@@ -6,7 +6,10 @@
     <div class="jumbotron text-center">
         <h1>Ticket System</h1>
     </div>
+    <asp:Label ID="ActiveEvents" runat="server"></asp:Label>
+    <br />
     <div class="container row">
+        
         <div class="col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">

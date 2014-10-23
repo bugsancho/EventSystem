@@ -12,7 +12,19 @@ namespace EventSystem.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            const string ActiveEvents = "activeEventsCount";
+            if (Cache[ActiveEvents] != null)
+            {
+                this.ActiveEvents.Text = "Upcoming events: " + Cache[ActiveEvents].ToString();
+            }
+            else
+            {
+                DateTime currentDate = DateTime.Now;
+                var activeEventsCount = this.Data.Events.All().Where(d => d.EndDate >= currentDate).OrderBy(d => d.StartDate).Count();
+                Cache.Insert(ActiveEvents, activeEventsCount, null, DateTime.Now.AddSeconds(60), TimeSpan.Zero);
 
+                this.ActiveEvents.Text = "Upcoming events: " + activeEventsCount;
+            }
         }
 
         public IEnumerable<EventSystem.Models.Venue> VenueImagesContainer_GetData()
