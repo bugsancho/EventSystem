@@ -15,8 +15,9 @@
                     <asp:BoundField  DataField="EndDate" HeaderText="End Date" />
                     <asp:BoundField  DataField="Category" HeaderText="Category" />
                     <asp:BoundField  DataField="PurchasedTickets" HeaderText="Purchased Tickets" />
-                    <asp:BoundField  DataField="" HeaderText="Tickets Left" />
+                    <asp:BoundField  DataField="TicketsLeft" HeaderText="Tickets Left" />
                     <asp:BoundField  DataField="Price" HeaderText="Price" />
+                    <asp:BoundField  DataField="Host" HeaderText="Hosted by" />
                 </Fields>
             </asp:DetailsView>
         </asp:Panel>
