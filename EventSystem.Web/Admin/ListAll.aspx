@@ -6,8 +6,6 @@
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
     
-    <h2 class="text-center">All venues</h2>
-    <br />
     <asp:ListView ID="ListViewVenues" runat="server" 
                   ItemType="EventSystem.Models.Venue" 
                   SelectMethod="ListViewVenues_GetData" 

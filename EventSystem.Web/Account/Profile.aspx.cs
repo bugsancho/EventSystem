@@ -124,7 +124,7 @@ namespace EventSystem.Web.Account
         // The id parameter name should match the DataKeyNames value set on the control
         public void ListViewMyEvents_UpdateItem(int id)
         {
-            EventSystem.Models.Event item = null;
+            EventSystem.Models.Event item = this.Data.Events.Find(id);
             // Load the item here, e.g. item = MyDataLayer.Find(id);
             if (item == null)
             {
@@ -132,10 +132,55 @@ namespace EventSystem.Web.Account
                 ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
                 return;
             }
+
             TryUpdateModel(item);
+
+            const string ImagePath = "/Content/Images/Event/";
+            string imageUrl = "";
+
+            var listViewItem = this.ListViewMyEvents.EditItem;
+            var fileUploadControl = listViewItem.FindControl("FileUploadControl") as FileUpload;
+
+            if (!string.IsNullOrEmpty(fileUploadControl.FileName))
+            {
+                try
+                {
+                    if (fileUploadControl.PostedFile.ContentType == "image/jpeg" ||
+                        fileUploadControl.PostedFile.ContentType == "image/png")
+                    {
+                        if (fileUploadControl.PostedFile.ContentLength < 512000)
+                        {
+                            string fileExtention = Path.GetExtension(fileUploadControl.FileName);
+                            imageUrl = ImagePath + id + fileExtention;
+                            fileUploadControl.SaveAs(Server.MapPath("~" + ImagePath) + id + fileExtention);
+                            item.ImageUrl = imageUrl;
+                        }
+                        else
+                        {
+                            this.ErrorMessage.Text = "The file has to be less than 500 kb!";
+                            this.errorBox.Visible = true;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
+                        this.errorBox.Visible = true;
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
+                    this.errorBox.Visible = true;
+                    return;
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
+                this.Data.SaveChanges();
             }
         }
 
@@ -155,7 +200,7 @@ namespace EventSystem.Web.Account
         // The id parameter name should match the DataKeyNames value set on the control
         public void ListViewMyVenues_UpdateItem(int id)
         {
-            EventSystem.Models.Venue item = null;
+            EventSystem.Models.Venue item = this.Data.Venues.Find(id);
             // Load the item here, e.g. item = MyDataLayer.Find(id);
             if (item == null)
             {
@@ -163,10 +208,55 @@ namespace EventSystem.Web.Account
                 ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
                 return;
             }
+
             TryUpdateModel(item);
+
+            const string ImagePath = "/Content/Images/Venue/";
+            string imageUrl = "";
+
+            var listViewItem = this.ListViewMyVenues.EditItem;
+            var fileUploadControl = listViewItem.FindControl("FileUploadControl") as FileUpload;
+
+            if (!string.IsNullOrEmpty(fileUploadControl.FileName))
+            {
+                try
+                {
+                    if (fileUploadControl.PostedFile.ContentType == "image/jpeg" ||
+                        fileUploadControl.PostedFile.ContentType == "image/png")
+                    {
+                        if (fileUploadControl.PostedFile.ContentLength < 512000)
+                        {
+                            string fileExtention = Path.GetExtension(fileUploadControl.FileName);
+                            imageUrl = ImagePath + id + fileExtention;
+                            fileUploadControl.SaveAs(Server.MapPath("~" + ImagePath) + id + fileExtention);
+                            item.ImageUrl = imageUrl;
+                        }
+                        else
+                        {
+                            this.ErrorMessage.Text = "The file has to be less than 500 kb!";
+                            this.errorBox.Visible = true;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
+                        this.errorBox.Visible = true;
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
+                    this.errorBox.Visible = true;
+                    return;
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
+                this.Data.SaveChanges();
             }
         }
     }
