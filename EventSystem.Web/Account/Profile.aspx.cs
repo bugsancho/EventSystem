@@ -21,7 +21,7 @@ namespace EventSystem.Web.Account
             this.errorBox.Visible = false;
 
             var requestUserId = this.Request["id"];
-            if (requestUserId != null)
+            if (requestUserId != null && !(this.User.Identity.IsAuthenticated && this.LoggedUser.Id == requestUserId))
             { 
                 this.ListViewMyEvents.Visible = false;
                 this.ListViewMyVenues.Visible = false;
