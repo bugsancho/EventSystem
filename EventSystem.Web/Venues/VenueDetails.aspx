@@ -2,7 +2,6 @@
 
 <asp:Content ID="ContentVenueDetails" ContentPlaceHolderID="MainContent" runat="server">
     <br />
-
     <asp:FormView ID="FormViewVenue"
         DataKeyNames="Id"
         GridLines="None"
