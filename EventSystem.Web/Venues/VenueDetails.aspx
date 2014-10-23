@@ -2,6 +2,10 @@
 
 <asp:Content ID="ContentVenueDetails" ContentPlaceHolderID="MainContent" runat="server">
     <br />
+    <p class="alert alert-danger" id="errorBox" runat="server">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <asp:Literal runat="server" ID="ErrorMessage" />
+    </p>
     <asp:FormView ID="FormViewVenue"
         DataKeyNames="Id"
         GridLines="None"
