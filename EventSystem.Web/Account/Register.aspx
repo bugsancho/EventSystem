@@ -55,7 +55,9 @@
         </div>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="PhoneNumber" CssClass="col-md-2 control-label">Phone Number</asp:Label>
-            <asp:TextBox runat="server" ID="PhoneNumber" CssClass="form-control" />
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="PhoneNumber" CssClass="form-control" />
+            </div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="FileUploadControl" CssClass="col-md-2 control-label">Profile Image</asp:Label>

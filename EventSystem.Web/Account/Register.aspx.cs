@@ -24,7 +24,8 @@ namespace EventSystem.Web.Account
             try
             {
                 if (FileUploadControl.PostedFile.ContentType == "image/jpeg" ||
-                    FileUploadControl.PostedFile.ContentType == "image/png")
+                    FileUploadControl.PostedFile.ContentType == "image/png" ||
+                    FileUploadControl.PostedFile.ContentLength == 0)
                 {
                     if (FileUploadControl.PostedFile.ContentLength < 512000)
                     {
@@ -39,7 +40,11 @@ namespace EventSystem.Web.Account
                         };
 
                         IdentityResult result = manager.Create(user, Password.Text);
-                        if (result.Succeeded)
+                        if (FileUploadControl.PostedFile.ContentLength == 0)
+                        {
+                            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        }
+                        else if (result.Succeeded)
                         {
                             string fileExtention = Path.GetExtension(FileUploadControl.FileName);
                             var id = user.Id;
@@ -60,7 +65,6 @@ namespace EventSystem.Web.Account
                             this.errorBox.Visible = true;
                             ErrorMessage.Text = result.Errors.FirstOrDefault();
                         }
-
                         //EventSystem.Models.Event newEvent = new EventSystem.Models.Event();
                         //newEvent.Title = this.Title.Text;
                         //newEvent.Description = this.Description.Text;
@@ -72,7 +76,6 @@ namespace EventSystem.Web.Account
                         //
                         //var currentUserId = Microsoft.AspNet.Identity.IdentityExtensions.GetUserId(this.User.Identity);
                         //var currentUser = this.Data.Users.Find(currentUserId);
-
                         //newEvent.Host = currentUser;
                         //
                         //this.Data.Events.Add(newEvent);
@@ -109,8 +112,6 @@ namespace EventSystem.Web.Account
                 this.errorBox.Visible = true;
                 return;
             }
-
-            
         }
     }
 }
