@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <asp:DataPager ID="DataPagerCustomers" runat="server" PageSize="5">
+                        <asp:DataPager ID="DataPagerCustomers" runat="server" PageSize="4">
                             <Fields>
                                 <asp:NextPreviousPagerField ShowFirstPageButton="True"
                                     ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default" />
@@ -44,7 +44,7 @@
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <My:UserInfoBoxControl runat="server"
                             Target='<%# "~/Event/EventDetails?id="+Item.Id %>'
                             Info='<%# ""+Item.Title %>'

@@ -88,3 +88,7 @@ input[type="select"] {
     max-height: 100%;
     max-width:100%;
 }
+
+.btn {
+    margin: 5px 0;
+}
