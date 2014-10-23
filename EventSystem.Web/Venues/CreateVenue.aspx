@@ -5,7 +5,7 @@
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
 
-    <div>
+    <div class="form-horizontal">
         <h4>Create a new venue</h4>
         <hr />
     
@@ -29,9 +29,7 @@
             <asp:Label runat="server" AssociatedControlID="AvailableSeats" CssClass="col-md-2 control-label">Available seats</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="AvailableSeats" CssClass="form-control" />
-                <asp:RangeValidator runat="server" Type="Integer" 
-MinimumValue="1" MaximumValue="4000" ControlToValidate="AvailableSeats"
-ErrorMessage="The available seats field must be number between 1 and 10000" /><br />
+                <asp:RangeValidator runat="server" Type="Integer" MinimumValue="1" MaximumValue="4000" ControlToValidate="AvailableSeats" ErrorMessage="The available seats field must be number between 1 and 10000" /><br />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="AvailableSeats"
                   CssClass="text-danger" ErrorMessage="The available seats field is required." />
             </div>

@@ -9,6 +9,8 @@ namespace EventSystem.Data
         IRepository<Venue> Venues { get; }
 
         IRepository<Event> Events { get; }
+        
+        IRepository<EventCategory> EventCategories { get; }
 
         IRepository<User> Users { get; }
 

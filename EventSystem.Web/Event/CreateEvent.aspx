@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateEvent.aspx.cs" Inherits="EventSystem.Web.Event.CreateEvent" %>
+
 <asp:Content ID="ContentCreateEvent" ContentPlaceHolderID="MainContent" runat="server">
+
     <p class="alert alert-danger" id="errorBox" runat="server">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <asp:Literal runat="server" ID="ErrorMessage" />
@@ -8,13 +10,13 @@
     <div>
         <h4>Create a new event</h4>
         <hr />
-    
+
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Title" CssClass="col-md-2 control-label">Title</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Title" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Title"
-                  CssClass="text-danger" ErrorMessage="The title field is required." />
+                    CssClass="text-danger" ErrorMessage="The title field is required." />
             </div>
         </div>
         <div class="form-group">
@@ -22,7 +24,7 @@
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Description" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Description"
-                  CssClass="text-danger" ErrorMessage="The description field is required." />
+                    CssClass="text-danger" ErrorMessage="The description field is required." />
             </div>
         </div>
         <div class="form-group">
@@ -32,7 +34,35 @@
                 <asp:RangeValidator runat="server" Type="Double" MinimumValue="0" MaximumValue="100000" ControlToValidate="Price"
                     ErrorMessage="The price must be greater than 0" /><br />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Price"
-                  CssClass="text-danger" ErrorMessage="The price field is required." />
+                    CssClass="text-danger" ErrorMessage="The price field is required." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="Categories" CssClass="col-md-2 control-label">Categories</asp:Label>
+            <div>
+                <asp:DropDownList ID="Categories" runat="server" ItemType="EventSystem.Models.EventCategory"
+                    SelectMethod="DropDownListCategories_GetData" DataTextField="Name" DataValueField="Id">
+                </asp:DropDownList>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="DropDownVenues" CssClass="col-md-2 control-label">Venues</asp:Label>
+            <div>
+                <asp:DropDownList ID="DropDownVenues" runat="server" ItemType="EventSystem.Models.Venue"
+                    SelectMethod="DropDownListVenues_GetData" DataTextField="Name" DataValueField="Id">
+                </asp:DropDownList>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="TextBoxStartDate" CssClass="col-md-2 control-label">Start Date</asp:Label>
+            <div>
+                <asp:TextBox ID="TextBoxStartDate" runat="server" TextMode="Date"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="TextBoxEndDate" CssClass="col-md-2 control-label">End Date</asp:Label>
+            <div>
+                <asp:TextBox ID="TextBoxEndDate" runat="server" TextMode="Date" />
             </div>
         </div>
         <div class="form-group">
@@ -41,7 +71,6 @@
                 <asp:FileUpload ID="FileUploadControl" runat="server" />
             </div>
         </div>
-        <br />
         <div class="form-group">
             <div class="col-md-offset-4 col-md-8">
                 <asp:Button runat="server" OnClick="CreateEvent_Click" Text="Create" CssClass="btn btn-default" />

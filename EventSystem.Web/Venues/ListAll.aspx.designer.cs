@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EventSystem.Web {
+namespace EventSystem.Web.Venues {
     
     
-    public partial class _Default {
+    public partial class ListAll {
         
         /// <summary>
-        /// EventImagesContainer control.
+        /// ListViewVenues control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater EventImagesContainer;
+        protected global::System.Web.UI.WebControls.ListView ListViewVenues;
+        
+        /// <summary>
+        /// DataPagerVenues control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager DataPagerVenues;
     }
 }
