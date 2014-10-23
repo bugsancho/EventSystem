@@ -9,13 +9,18 @@
                 <dl class="dl-horizontal">
 
                     <dt>Username:</dt>
-                    <dd><%: CurrentUser.UserName %>
+                    <dd><%: LoggedUser.UserName %></dd>
                     
                     <dt>Full name:</dt>
-                    <dd><%: CurrentUser.FirstName + " " + CurrentUser.LastName %>
+                    <dd><%: LoggedUser.FirstName + " " + LoggedUser.LastName %></dd>
 
                     <dt>Phone number:</dt>
-                    <dd><%: CurrentUser.PhoneNumber%>
+                    <dd><%: LoggedUser.PhoneNumber%></dd>
+
+                    <dt>Profile Image:</dt>
+                    <dd>
+                        <img src="<%: LoggedUser.GetProfileImageOrDefault()%>" height="100" width ="100" />
+                    </dd>
 
                     
                 </dl>
