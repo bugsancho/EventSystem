@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EventSystem.Data;
+using EventSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -7,6 +9,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using Microsoft.AspNet.Identity;
+
 namespace EventSystem.Web
 {
     public partial class SiteMaster : MasterPage
@@ -14,6 +18,15 @@ namespace EventSystem.Web
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
+
+        protected IEventSystemData Data { get; set; }
+        public User LoggedUser;
+
+        public SiteMaster()
+        {
+            this.Data = new EventSystemData();
+            this.LoggedUser = this.Data.Users.Find(Context.User.Identity.GetUserId());
+        }
 
         protected void Page_Init(object sender, EventArgs e)
         {

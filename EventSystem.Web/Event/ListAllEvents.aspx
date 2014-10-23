@@ -15,9 +15,9 @@
                         </asp:LinkButton>
                     </th>
                     <th>
-                        <asp:LinkButton runat="server" ID="SortByLocation"
-                            CommandName="Sort" CommandArgument="Location">
-                            Location
+                        <asp:LinkButton runat="server" ID="SortByDescription"
+                            CommandName="Sort" CommandArgument="Description">
+                            Description
                         </asp:LinkButton>
                     </th>
                     <th>
@@ -38,6 +38,12 @@
                             End Date
                         </asp:LinkButton>
                     </th>
+                    <th>
+                        <asp:LinkButton runat="server" ID="LinkButtonPurchasedTickets"
+                            CommandName="Sort" CommandArgument="PurchasedTickets">
+                            Purchased Tickets
+                        </asp:LinkButton>
+                    </th>
                 </tr>
                 <tr id="itemPlaceholder" runat="server"></tr>
             </table>
@@ -49,6 +55,7 @@
                 <td><%#: Item.Price %></td>
                 <td><%#: Item.StartDate %></td>
                 <td><%#: Item.EndDate %></td>
+                <td><%#: Item.PurchasedTickets %></td>
                 <td>
                     <asp:HyperLink runat="server" NavigateUrl='<%#: "EventDetails?id="+ Item.Id %>' Text="Details" CssClass="btn btn-default"></asp:HyperLink>
                 </td>
@@ -85,6 +92,12 @@
                         runat="server"
                         CssClass="form-control"
                         Text='<%#: BindItem.EndDate %>' />
+                </td>
+                <td runat="server">
+                    <asp:TextBox ID="TextBoxPurchasedTickets"
+                        runat="server"
+                        CssClass="form-control"
+                        Text='<%#: BindItem.PurchasedTickets %>' />
                 </td>
                 <td runat="server">
                     <asp:Button runat="server" ID="btnEdit" CssClass="btn btn-warning" Text="Update" CommandName="Update" />
