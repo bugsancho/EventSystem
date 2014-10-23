@@ -201,6 +201,11 @@
                 </td>
             </tr>
         </EditItemTemplate>
+        <EmptyDataTemplate>
+            <div class="jumbotron">
+                <h3>You have no events. <a href="/Event/CreateEvent">Click here to create an event</a></h3>
+            </div>
+        </EmptyDataTemplate>
 
     </asp:ListView>
     <asp:DataPager ID="DataPagerVenues" runat="server" PagedControlID="ListViewMyEvents" PageSize="2">
@@ -290,6 +295,11 @@
                 </td>
             </tr>
         </EditItemTemplate>
+        <EmptyDataTemplate>
+            <div class="jumbotron">
+                <h3>You have no venues. <a href="/Venues/CreateVenue">Click here to create a venue</a></h3>
+            </div>
+        </EmptyDataTemplate>
 
     </asp:ListView>
     <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListViewMyVenues" PageSize="2">
