@@ -75,3 +75,16 @@ input[type="select"] {
     -ms-filter: blur(2px);
     filter: blur(2px);
 }
+
+.image-wrapper{
+    width: 150px;
+    height: 150px;
+    vertical-align:middle;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.image-wrapper>img{
+    max-height: 100%;
+    max-width:100%;
+}
