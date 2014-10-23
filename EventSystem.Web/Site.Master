@@ -75,6 +75,9 @@
                                             <a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a>
                                         </li>
                                         <li>
+                                            <img src="<%: LoggedUser.GetProfileImageOrDefault() %>" height="40px" width="40px" />
+                                        </li>
+                                        <li>
                                             <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                         </li>
                                     </ul>
