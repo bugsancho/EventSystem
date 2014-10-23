@@ -219,6 +219,7 @@
     <Content Include="Styles\calendar-blue.css" />
     <Content Include="Venues\CreateVenue.aspx" />
     <Content Include="Admin\ListAll.aspx" />
+    <Content Include="Venues\ListAllVenuesPublic.aspx" />
     <Content Include="Venues\VenueDetails.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -452,6 +453,13 @@
     </Compile>
     <Compile Include="Admin\ListAll.aspx.designer.cs">
       <DependentUpon>ListAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venues\ListAllVenuesPublic.aspx.cs">
+      <DependentUpon>ListAllVenuesPublic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venues\ListAllVenuesPublic.aspx.designer.cs">
+      <DependentUpon>ListAllVenuesPublic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venues\VenueDetails.aspx.cs">
       <DependentUpon>VenueDetails.aspx</DependentUpon>
