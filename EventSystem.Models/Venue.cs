@@ -17,6 +17,7 @@ namespace EventSystem.Models
 
         public string ImageUrl { get; set; }
 
-        public User Host { get; set; }
+
+        public virtual User Host { get; set; }
     }
 }
