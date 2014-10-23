@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using System.IO;
 
@@ -19,12 +19,28 @@ namespace EventSystem.Web.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             this.errorBox.Visible = false;
+
+            var requestUserId = this.Request["id"];
+            if (requestUserId != null)
+            { 
+                this.ListViewMyEvents.Visible = false;
+                this.ListViewMyVenues.Visible = false;
+                this.DataPager1.Visible = false;
+                this.DataPagerVenues.Visible = false; 
+                Button btnEdit = FormViewProfile.FindControl("btnEdit") as Button;
+                btnEdit.Visible = false;
+            }
         }
 
         // The id parameter should match the DataKeyNames value set on the control
         // or be decorated with a value provider attribute, e.g. [QueryString]int id
         public EventSystem.Models.User FormViewProfile_GetItem(string id)
         {
+            var requestUserId = this.Request["id"];
+            if (requestUserId != null)
+            {
+                return this.Data.Users.Find(requestUserId);
+            }
             var user = this.Data.Users.Find(Context.User.Identity.GetUserId());
             return user;
         }
@@ -89,7 +105,68 @@ namespace EventSystem.Web.Account
             {
                 this.Data.SaveChanges();
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
+            }
+        }
 
+        // The return type can be changed to IEnumerable, however to support
+        // paging and sorting, the following parameters must be added:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IQueryable<EventSystem.Models.Event> ListViewMyEvents_GetData()
+        {
+            var currentUserId = Context.User.Identity.GetUserId();
+            var events = this.Data.Events.All().Include("Venue").Where(e => e.Host.Id == currentUserId);
+            return events;
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void ListViewMyEvents_UpdateItem(int id)
+        {
+            EventSystem.Models.Event item = null;
+            // Load the item here, e.g. item = MyDataLayer.Find(id);
+            if (item == null)
+            {
+                // The item wasn't found
+                ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
+                return;
+            }
+            TryUpdateModel(item);
+            if (ModelState.IsValid)
+            {
+                // Save changes here, e.g. MyDataLayer.SaveChanges();
+            }
+        }
+
+        // The return type can be changed to IEnumerable, however to support
+        // paging and sorting, the following parameters must be added:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IQueryable<EventSystem.Models.Venue> ListViewMyVenues_GetData()
+        {
+            var currentUserId = Context.User.Identity.GetUserId();
+            var venues = this.Data.Venues.All().Where(v => v.Host.Id == currentUserId);
+            return venues;
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void ListViewMyVenues_UpdateItem(int id)
+        {
+            EventSystem.Models.Venue item = null;
+            // Load the item here, e.g. item = MyDataLayer.Find(id);
+            if (item == null)
+            {
+                // The item wasn't found
+                ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
+                return;
+            }
+            TryUpdateModel(item);
+            if (ModelState.IsValid)
+            {
+                // Save changes here, e.g. MyDataLayer.SaveChanges();
             }
         }
     }
