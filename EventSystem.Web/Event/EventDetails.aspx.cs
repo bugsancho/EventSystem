@@ -26,19 +26,29 @@ namespace EventSystem.Web.Event
             DetailsViewEvents.DataSource = eventData;
             DetailsViewEvents.DataBind();
 
-            var joined = IsJoined();
-            if (!joined && eventData[0].TicketsLeft > 0)
+            this.JoinEventBtn.Visible = CanEventBeJoined();
+            this.BtnSubmitComment.Visible = CanEventBeCommented();
+            this.TextBoxComment.Visible = CanEventBeCommented();
+        }
+
+        private bool CanEventBeJoined()
+        {   
+            if (!this.User.Identity.IsAuthenticated)
             {
-                this.JoinEventBtn.Visible = true;
-                this.BtnSubmitComment.Visible = false;
-                this.TextBoxComment.Visible = false;
+                return false;
             }
-            else
+
+            return !this.Event.Attendants.Contains(this.LoggedUser);
+        }
+
+        private bool CanEventBeCommented()
+        {
+            if (!this.User.Identity.IsAuthenticated)
             {
-                this.JoinEventBtn.Visible = false;
-                this.BtnSubmitComment.Visible = true;
-                this.TextBoxComment.Visible = true;
+                return false;
             }
+
+            return this.Event.Attendants.Contains(this.LoggedUser);
         }
 
         public EventViewModel DetailsViewEvent_GetEventInfo()
@@ -64,11 +74,6 @@ namespace EventSystem.Web.Event
             int id = int.Parse(this.Request["id"]);
 
             return this.Data.Events.Find(id);
-        }
-
-        private bool IsJoined()
-        {
-            return this.Event.Attendants.Contains(this.LoggedUser);
         }
 
         protected void JoinEventBtn_Click(object sender, EventArgs e)
