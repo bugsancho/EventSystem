@@ -161,6 +161,9 @@
                         <img src="<%#: Item.ImageUrl %>" />
                     </div>
                 </td>
+                <td>
+                    <asp:Button runat="server" ID="btnEdit" CssClass="btn btn-warning" Text="Edit" CommandName="Edit" />
+                </td>
             </tr>
         </ItemTemplate>
         <EditItemTemplate>
@@ -170,6 +173,9 @@
                         runat="server"
                         CssClass="form-control"
                         Text='<%#: BindItem.Title %>' />
+                </td>
+                <td>
+
                 </td>
                 <td runat="server">
                     <asp:TextBox ID="TextBoxDescription"
@@ -194,6 +200,9 @@
                         runat="server"
                         CssClass="form-control"
                         Text='<%#: BindItem.EndDate %>' />
+                </td>
+                <td>
+                    <asp:FileUpload ID="FileUploadControl" runat="server" />
                 </td>
                 <td runat="server">
                     <asp:Button runat="server" ID="btnEdit" CssClass="btn btn-warning" Text="Update" CommandName="Update" />
@@ -223,7 +232,7 @@
         UpdateMethod="ListViewMyVenues_UpdateItem"
         DataKeyNames="Id">
         <LayoutTemplate>
-            <h3>My Events</h3>
+            <h3>My Venues</h3>
             <table class="table table-striped">
                 <tr>
                     <th>
@@ -261,6 +270,9 @@
                         <img src="<%#: Item.ImageUrl %>" />
                     </div>
                     
+                </td>
+                <td>
+                    <asp:Button runat="server" ID="btnEdit" CssClass="btn btn-warning" Text="Edit" CommandName="Edit" />
                 </td>
             </tr>
         </ItemTemplate>
