@@ -14,19 +14,16 @@ namespace EventSystem.Web.Venues
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.errorBox.Visible = false;
+
             int venueId = int.Parse(this.Request["id"]);
             var venue = this.Data.Venues.Find(venueId);
 
-            if (venue.Host == null)
+            if (venue.Host == null && !this.User.IsInRole("Administrator"))
             {
                 Button btnEdit = FormViewVenue.FindControl("btnEdit") as Button;
                 btnEdit.Visible = false;
             }
-        }
-
-        protected void Page_Rnder(object sender, EventArgs e)
-        {
-
         }
 
         public object FormViewVenue_GetItem()
@@ -36,7 +33,6 @@ namespace EventSystem.Web.Venues
             return this.Data.Venues.Find(id);
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
         public void FormViewVenue_UpdateItem(int id)
         {
             EventSystem.Models.Venue item = null;
@@ -55,11 +51,42 @@ namespace EventSystem.Web.Venues
 
             FileUpload fileUploadControl = FormViewVenue.FindControl("FileUploadControl") as FileUpload;
 
-            string fileExtention = Path.GetExtension(fileUploadControl.FileName);
-            imageUrl = ImagePath + id + fileExtention;
-            fileUploadControl.SaveAs(Server.MapPath("~" + ImagePath) + id + fileExtention);
+            if (!string.IsNullOrEmpty(fileUploadControl.FileName))
+            {
+                try
+                {
+                    if (fileUploadControl.PostedFile.ContentType == "image/jpeg" ||
+                        fileUploadControl.PostedFile.ContentType == "image/png")
+                    {
+                        if (fileUploadControl.PostedFile.ContentLength < 512000)
+                        {
+                            string fileExtention = Path.GetExtension(fileUploadControl.FileName);
+                            imageUrl = ImagePath + id + fileExtention;
+                            fileUploadControl.SaveAs(Server.MapPath("~" + ImagePath) + id + fileExtention);
 
-            item.ImageUrl = imageUrl;
+                            item.ImageUrl = imageUrl;
+                        }
+                        else
+                        {
+                            this.ErrorMessage.Text = "The file has to be less than 500 kb!";
+                            this.errorBox.Visible = true;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
+                        this.errorBox.Visible = true;
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
+                    this.errorBox.Visible = true;
+                    return;
+                }
+            }
 
             if (ModelState.IsValid)
             {

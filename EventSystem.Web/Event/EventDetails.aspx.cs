@@ -15,27 +15,19 @@ namespace EventSystem.Web.Event
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var eventData = new List<EventSystem.Models.Event>() { DetailsViewEvent_GetItem() };
-            this.Event = eventData[0];
-            Image1.ImageUrl = eventData[0].ImageUrl;
-
-            DetailsViewEvents.DataSource = eventData;
-            DetailsViewEvents.DataBind();
-            var joined = IsJoined();
-            if (!joined)
-            {
-                this.JoinEventBtn.Visible = true;
-            }
-            else
-            {
-                this.JoinEventBtn.Visible = false;
-            }
+            this.Event = DetailsViewEvent_GetEvent();
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
+            var eventData = new List<EventViewModel>() { DetailsViewEvent_GetEventInfo() };            
+            Image1.ImageUrl = eventData[0].ImageUrl;
+
+            DetailsViewEvents.DataSource = eventData;
+            DetailsViewEvents.DataBind();
+
             var joined = IsJoined();
-            if (!joined)
+            if (!joined && eventData[0].TicketsLeft > 0)
             {
                 this.JoinEventBtn.Visible = true;
                 this.BtnSubmitComment.Visible = false;
@@ -49,7 +41,25 @@ namespace EventSystem.Web.Event
             }
         }
 
-        public EventSystem.Models.Event DetailsViewEvent_GetItem()
+        public EventViewModel DetailsViewEvent_GetEventInfo()
+        {
+            int id = int.Parse(this.Request["id"]);
+            return this.Data.Events.All().Where(x => x.Id == id).Select(x => new EventViewModel
+            {
+                Title = x.Title,
+                Description = x.Description,
+                StartDate = x.StartDate,
+                EndDate = x.EndDate,
+                PurchasedTickets = x.PurchasedTickets,
+                TicketsLeft = (x.Venue.AvailableSeats - x.PurchasedTickets),
+                Price = x.Price,
+                ImageUrl = x.ImageUrl,
+                Category = x.Category.Name,
+                Host = x.Host.UserName + " (" + x.Host.FirstName + " " + x.Host.LastName + ")"
+            }).FirstOrDefault();
+        }
+
+        public EventSystem.Models.Event DetailsViewEvent_GetEvent()
         {
             int id = int.Parse(this.Request["id"]);
 
@@ -64,9 +74,11 @@ namespace EventSystem.Web.Event
         protected void JoinEventBtn_Click(object sender, EventArgs e)
         {
             this.LoggedUser.Events.Add(this.Event);
+            this.Event.PurchasedTickets += 1;
             this.Data.SaveChanges();
             this.Event.Attendants.Add(this.LoggedUser);
             this.Data.SaveChanges();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void BtnSubmitComment_Click(object sender, EventArgs e)
@@ -78,6 +90,16 @@ namespace EventSystem.Web.Event
             comment.Text = this.TextBoxComment.Text;
             this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
+
+            Response.Redirect(Request.RawUrl);
+        }
+        
+        public IQueryable<EventSystem.Models.Comment> CommentsPanel_GetData()
+        {
+            var comments = this.Data.Events.All()
+                               .Where(e => e.Id == this.Event.Id)
+                               .Select(e => e.Comments);
+            return comments.FirstOrDefault().AsQueryable();
         }
     }
 }

@@ -72,7 +72,7 @@
                                 <LoggedInTemplate>
                                     <ul class="nav navbar-nav navbar-right fix">
                                         <li>
-                                            <a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a>
+                                            <a runat="server" href="~/Account/Profile" title="Account Profile">Hello, <%: Context.User.Identity.GetUserName()  %> !</a>
                                         </li>
                                         <li>
                                             <img src="<%: LoggedUser.GetProfileImageOrDefault() %>" height="40px" width="40px" />

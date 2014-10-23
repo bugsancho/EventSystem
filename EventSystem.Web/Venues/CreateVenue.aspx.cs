@@ -23,6 +23,13 @@ namespace EventSystem.Web.Venue
             const string ImagePath = "/Content/Images/Venue/";
             string imageUrl = "";
 
+            if (string.IsNullOrEmpty(FileUploadControl.FileName))
+            {
+                this.ErrorMessage.Text = "Image is required!";
+                this.errorBox.Visible = true;
+                return;
+            }
+
             try
             {
                 if (FileUploadControl.PostedFile.ContentType == "image/jpeg" ||
