@@ -88,7 +88,7 @@ MasterPageFile="~/Site.Master" %>
                 </td>
                 <td runat="server">
                     <asp:Button runat="server" ID="btnEdit" CssClass="btn btn-warning" Text="Edit" CommandName="Edit" />
-                    <asp:Button runat="server" ID="btnDelete" CssClass="btn btn-danger" Text="Delete" CommandName="Delete" />
+                    <asp:Button runat="server" ID="btnDelete" CssClass="btn btn-danger" Text="Delete" CommandName="Delete" OnClientClick="return confirm('Are you sure you want to delete this user and all its events and venues?');"/>
                 </td>
             </tr>
         </ItemTemplate>

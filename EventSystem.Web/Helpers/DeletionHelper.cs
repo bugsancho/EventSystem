@@ -24,6 +24,13 @@ namespace EventSystem.Web.Helpers
             {
                 user.Events.Remove(ev);
             }
+
+            var comments = data.Comments.All().Where(c => c.Event.Id == ev.Id);
+            foreach (var comment in comments)
+            {
+                data.Comments.Delete(comment);
+            }
+
             data.Events.Delete(ev);
             data.SaveChanges();
         }
