@@ -12,7 +12,8 @@
       <siteMapNode title="All Events" description="List all events public" url="~/Event/ListAllEventsPublic.aspx"/>
     </siteMapNode>
     <siteMapNode title="Venues" description="Site administration" roles="admin">
-      <siteMapNode title="Create" description="Register a new venue" url="~/Venues/CreateVenue.aspx"/>      
+      <siteMapNode title="Create" description="Register a new venue" url="~/Venues/CreateVenue.aspx"/>
+      <siteMapNode title="All Venues" description="List all venues public" url="~/Venues/ListAllVenuesPublic.aspx"/>
     </siteMapNode>
   </siteMapNode>
 </siteMap>
