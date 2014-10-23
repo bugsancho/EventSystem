@@ -20,7 +20,7 @@
                     <asp:BoundField  DataField="PurchasedTickets" HeaderText="Purchased Tickets" />
                     <asp:BoundField  DataField="TicketsLeft" HeaderText="Tickets Left" />
                     <asp:BoundField  DataField="Price" HeaderText="Price" />
-                   <asp:HyperLinkField DataNavigateUrlFields="HostProfileLink" DataTextField="Host" HeaderText="Hosted By" />
+                    <asp:HyperLinkField DataNavigateUrlFields="HostProfileLink" DataTextField="Host" HeaderText="Hosted By" />
                 </Fields>
             </asp:DetailsView>
         </asp:Panel>
@@ -93,6 +93,73 @@
                 </ItemTemplate>
 
             </asp:ListView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
+    <h1 class="text-center"> Attendants</h1>
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>
+            <asp:ListView runat="server" ID="ListView1" 
+                          ItemType="EventSystem.Models.User" 
+                          SelectMethod="ListView1_GetData"
+                          DataKeyNames="Id">
+                <EmptyDataTemplate>
+                    <h1 class="text-center alert alert-info">This event has no attendants yet!</h1>
+                </EmptyDataTemplate>
+                <LayoutTemplate>
+                    <table runat="server" id="table1" class="table table-striped table-hover text-center">
+                        <tr runat="server">
+                            <th runat="server" class="text-center  col-md-2 ">
+                                <asp:LinkButton runat="server" ID="SortByFirstName" CommandName="Sort"
+                                                CommandArgument="FirstName">First Name</asp:LinkButton>
+                            </th>
+                            <th runat="server" class="text-center col-md-2">
+                                <asp:LinkButton runat="server" ID="SortByLastName" CommandName="Sort"
+                                                CommandArgument="LastName" >Last Name</asp:LinkButton>
+                            </th>
+                            <th runat="server" class="text-center">
+                                <asp:LinkButton runat="server" ID="SortByEmail" CommandName="Sort"
+                                                CommandArgument="Email">Email</asp:LinkButton>
+                            </th>
+                        </tr>
+                        <tr runat="server" id="itemPlaceholder" >
+                        </tr>
+                    </table>
+                    <div>
+                        <asp:DataPager ID="DataPagerCustomers" runat="server" PageSize="5">
+                            <Fields>
+                                <asp:NextPreviousPagerField ShowFirstPageButton="True" 
+                                                            ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default" />
+                                <asp:NumericPagerField CurrentPageLabelCssClass="btn btn-default" NextPreviousButtonCssClass="btn btn-default" NumericButtonCssClass ="btn btn-default" />
+                                <asp:NextPreviousPagerField ShowLastPageButton="True" 
+                                                            ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default" />
+                            </Fields>
+                        </asp:DataPager>
+                    </div>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <tr runat="server">
+                        <td runat="server">
+                            <asp:Label ID="UserName" 
+                                       runat="server" 
+                                       Text='<%#: Item.FirstName %>' />
+                        </td>
+                        <td runat="server">
+                            <asp:Label ID="FirstName" 
+                                       runat="server" 
+                                       Text='<%#: Item.LastName %>' />
+                        </td>
+                        <td runat="server">
+                            <asp:HyperLink ID="LastName" 
+                                           runat="server" 
+                                           NavigateUrl='<%#: "~/Account/Profile?id="+ Item.Id %>'
+                                           Text='<%#: Item.Email %>' />
+                        </td>
+                    </tr>
+                </ItemTemplate>
+
+            </asp:ListView>
+
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

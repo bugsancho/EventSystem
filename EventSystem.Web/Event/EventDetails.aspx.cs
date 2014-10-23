@@ -131,5 +131,16 @@ namespace EventSystem.Web.Event
                                .Select(e => e.Comments);
             return comments.FirstOrDefault().AsQueryable();
         }
+
+        // The return type can be changed to IEnumerable, however to support
+        // paging and sorting, the following parameters must be added:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IQueryable<EventSystem.Models.User> ListView1_GetData()
+        {
+            return this.Event.Attendants.AsQueryable();
+        }
     }
 }
