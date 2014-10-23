@@ -117,8 +117,8 @@
                     </th>
                     <th>
                         <asp:LinkButton runat="server" ID="SortByEventLocation"
-                                        CommandName="Sort" CommandArgument="Location">
-                            Location
+                                        CommandName="Sort" CommandArgument="Description">
+                            Description
                         </asp:LinkButton>
                     </th>
                     <th>
@@ -160,7 +160,6 @@
                     <div class="image-wrapper">
                         <img src="<%#: Item.ImageUrl %>" />
                     </div>
-                    
                 </td>
             </tr>
         </ItemTemplate>
