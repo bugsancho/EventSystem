@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.AspNet.Identity;
 using EventSystem.Models;
 
 namespace EventSystem.Web.Event
@@ -59,30 +58,23 @@ namespace EventSystem.Web.Event
 
         private bool IsJoined()
         {
-            var currentUserId = this.User.Identity.GetUserId();
-            var user = this.Data.Users.Find(currentUserId);
-            return this.Event.Attendants.Contains(user);
+            return this.Event.Attendants.Contains(this.LoggedUser);
         }
 
         protected void JoinEventBtn_Click(object sender, EventArgs e)
         {
-            var currentUserId = this.User.Identity.GetUserId();
-            var user = this.Data.Users.Find(currentUserId);
-            user.Events.Add(this.Event);
+            this.LoggedUser.Events.Add(this.Event);
             this.Data.SaveChanges();
-            this.Event.Attendants.Add(user);
+            this.Event.Attendants.Add(this.LoggedUser);
             this.Data.SaveChanges();
         }
 
         protected void BtnSubmitComment_Click(object sender, EventArgs e)
         {
-             var currentUserId = this.User.Identity.GetUserId();
-            var user = this.Data.Users.Find(currentUserId);
-
             var comment = new Comment();
             comment.Date = DateTime.Now;
             comment.Event = this.Event;
-            comment.User = user;
+            comment.User = this.LoggedUser;
             comment.Text = this.TextBoxComment.Text;
             this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
