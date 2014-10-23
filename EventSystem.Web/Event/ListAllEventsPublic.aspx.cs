@@ -14,9 +14,27 @@ namespace EventSystem.Web.Event
         {
 
         }
-        public IEnumerable<EventSystem.Models.Event> EventImagesContainer_GetData()
+
+        public IQueryable<EventSystem.Models.Event> ListView1_GetData()
         {
-            return this.Data.Events.All();
+            string idStr = Request.QueryString["q"];
+
+            if (idStr == null)
+            {
+                return this.Data.Events.All();
+            }
+            else
+            {
+                return this.Data.Events.All().Where(e => e.Title.Contains(idStr));
+            }
+        }
+
+        protected void SearchBtn_Click(object sender, EventArgs e)
+        {
+            var searchWord = this.TextBoxSearch.Text.ToString();
+
+            var query = string.Format("?q={0}", searchWord);
+            Response.Redirect("~/Event/ListAllEventsPublic" + query);
         }
     }
 }
