@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Entity;
 
 using Microsoft.AspNet.Identity;
 using System.IO;
@@ -88,6 +89,38 @@ namespace EventSystem.Web.Account
             if (ModelState.IsValid)
             {
                 this.Data.SaveChanges();
+                // Save changes here, e.g. MyDataLayer.SaveChanges();
+
+            }
+        }
+
+        // The return type can be changed to IEnumerable, however to support
+        // paging and sorting, the following parameters must be added:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IQueryable<EventSystem.Models.Event> ListViewMyEvents_GetData()
+        {
+            var currentUserId = Context.User.Identity.GetUserId();
+            var events = this.Data.Events.All().Include("Venue").Where(e => e.Host.Id == currentUserId);
+            return events;
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void ListViewMyEvents_UpdateItem(int id)
+        {
+            EventSystem.Models.Event item = null;
+            // Load the item here, e.g. item = MyDataLayer.Find(id);
+            if (item == null)
+            {
+                // The item wasn't found
+                ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
+                return;
+            }
+            TryUpdateModel(item);
+            if (ModelState.IsValid)
+            {
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
 
             }
