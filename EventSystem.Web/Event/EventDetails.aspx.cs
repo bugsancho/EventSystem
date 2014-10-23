@@ -21,21 +21,11 @@ namespace EventSystem.Web.Event
 
             DetailsViewEvents.DataSource = eventData;
             DetailsViewEvents.DataBind();
-            var joined = IsJoined();
-            if (!joined)
-            {
-                this.JoinEventBtn.Visible = true;
-            }
-            else
-            {
-                this.JoinEventBtn.Visible = false;
-            }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
-        {
-            var joined = IsJoined();
-            if (!joined)
+        { 
+            if (!IsJoined())
             {
                 this.JoinEventBtn.Visible = true;
                 this.BtnSubmitComment.Visible = false;
@@ -52,7 +42,6 @@ namespace EventSystem.Web.Event
         public EventSystem.Models.Event DetailsViewEvent_GetItem()
         {
             int id = int.Parse(this.Request["id"]);
-
             return this.Data.Events.Find(id);
         }
 
@@ -78,6 +67,16 @@ namespace EventSystem.Web.Event
             comment.Text = this.TextBoxComment.Text;
             this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
+
+            Response.Redirect(Request.RawUrl);
+        }
+        
+        public IQueryable<EventSystem.Models.Comment> CommentsPanel_GetData()
+        {
+            var comments = this.Data.Events.All()
+                               .Where(e => e.Id == this.Event.Id)
+                               .Select(e => e.Comments);
+            return comments.FirstOrDefault().AsQueryable();
         }
     }
 }
