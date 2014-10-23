@@ -170,6 +170,7 @@
     <Content Include="Controls\ImageTile.ascx" />
     <Content Include="Event\CreateEvent.aspx" />
     <Content Include="Event\EventDetails.aspx" />
+    <Content Include="Event\ListAllEvents.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -389,6 +390,13 @@
     <Compile Include="Event\EventDetails.aspx.designer.cs">
       <DependentUpon>EventDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Event\ListAllEvents.aspx.cs">
+      <DependentUpon>ListAllEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Event\ListAllEvents.aspx.designer.cs">
+      <DependentUpon>ListAllEvents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -467,7 +475,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5245</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
