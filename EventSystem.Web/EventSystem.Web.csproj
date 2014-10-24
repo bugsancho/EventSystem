@@ -169,6 +169,7 @@
     <Content Include="Content\Images\calender.png" />
     <Content Include="Content\Images\profile-default.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controls\ErrorNotifier.ascx" />
     <Content Include="Controls\ImageTile.ascx" />
     <Content Include="Event\CreateEvent.aspx" />
     <Content Include="Event\EventDetails.aspx" />
@@ -372,6 +373,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ErrorNotifier.ascx.cs">
+      <DependentUpon>ErrorNotifier.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ErrorNotifier.ascx.designer.cs">
+      <DependentUpon>ErrorNotifier.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\ImageTile.ascx.cs">
       <DependentUpon>ImageTile.ascx</DependentUpon>

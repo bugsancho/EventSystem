@@ -16,6 +16,7 @@ namespace EventSystem.Web.Event
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Event = DetailsViewEvent_GetEvent();
+            this.ErrorNotifierControl.Visible = false;
         }
 
         protected void Page_PreRender(object sender, EventArgs e)

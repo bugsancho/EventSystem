@@ -1,11 +1,9 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="EventSystem.Web.Account.Register" %>
+<%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
-    <p class="alert alert-danger" id="errorBox" runat="server">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <asp:Literal runat="server" ID="ErrorMessage" />
-    </p>
+    <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>
 
     <div class="form-horizontal">
         <h4>Create a new account</h4>

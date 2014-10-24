@@ -15,7 +15,7 @@ namespace EventSystem.Web.Venue
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.errorBox.Visible = false;
+            this.ErrorNotifierControl.Visible = false;
         }
 
         protected void CreateVenue_Click(object sender, EventArgs e)
@@ -25,8 +25,8 @@ namespace EventSystem.Web.Venue
 
             if (string.IsNullOrEmpty(FileUploadControl.FileName))
             {
-                this.ErrorMessage.Text = "Image is required!";
-                this.errorBox.Visible = true;
+                this.ErrorNotifierControl.ErrorMessageText = "Image is required!";
+                this.ErrorNotifierControl.Visible = true;
                 return;
             }
 
@@ -60,22 +60,22 @@ namespace EventSystem.Web.Venue
                     }
                     else
                     {
-                        this.ErrorMessage.Text = "The file has to be less than 500 kb!";
-                        this.errorBox.Visible = true;
+                        this.ErrorNotifierControl.ErrorMessageText = "The file has to be less than 500 kb!";
+                        this.ErrorNotifierControl.Visible = true;
                         return;
                     }
                 }
                 else
                 {
-                    this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
-                    this.errorBox.Visible = true;
+                    this.ErrorNotifierControl.ErrorMessageText = "Only JPEG or PNG files are accepted!";
+                    this.ErrorNotifierControl.Visible = true;
                     return;
                 }
             }
             catch (Exception ex)
             {
-                this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
-                this.errorBox.Visible = true;
+                this.ErrorNotifierControl.ErrorMessageText = "Upload status: The file could not be uploaded. " + ex.Message;
+                this.ErrorNotifierControl.Visible = true;
                 return;
             }
 

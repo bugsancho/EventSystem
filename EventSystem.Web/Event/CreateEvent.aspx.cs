@@ -14,7 +14,7 @@ namespace EventSystem.Web.Event
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.errorBox.Visible = false;
+            this.ErrorNotifierControl.Visible = false;
         }
 
         public void CreateEvent_Click(object sender, EventArgs e)
@@ -64,22 +64,22 @@ namespace EventSystem.Web.Event
                     }
                     else
                     {
-                        this.ErrorMessage.Text = "The file has to be less than 500 kb!";
-                        this.errorBox.Visible = true;
+                        this.ErrorNotifierControl.ErrorMessageText = "The file has to be less than 500 kb!";
+                        this.ErrorNotifierControl.Visible = true;
                         return;
                     }
                 }
                 else
                 {
-                    this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
-                    this.errorBox.Visible = true;
+                    this.ErrorNotifierControl.ErrorMessageText = "Only JPEG or PNG files are accepted!";
+                    this.ErrorNotifierControl.Visible = true;
                     return;
                 }
             }
             catch (Exception ex)
             {
-                this.ErrorMessage.Text = "Error while trying to create new event: " + ex.Message;
-                this.errorBox.Visible = true;
+                this.ErrorNotifierControl.ErrorMessageText = "Error while trying to create new event: " + ex.Message;
+                this.ErrorNotifierControl.Visible = true;
                 return;
             }
 

@@ -14,7 +14,7 @@ namespace EventSystem.Web.Venues
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.errorBox.Visible = false;
+            this.ErrorNotifierControl.Visible = false;
 
             int venueId = int.Parse(this.Request["id"]);
             var venue = this.Data.Venues.Find(venueId);
@@ -68,22 +68,23 @@ namespace EventSystem.Web.Venues
                         }
                         else
                         {
-                            this.ErrorMessage.Text = "The file has to be less than 500 kb!";
-                            this.errorBox.Visible = true;
+                            this.ErrorNotifierControl.ErrorMessageText = "The file has to be less than 500 kb!";
+                            this.ErrorNotifierControl.Visible = true;
                             return;
                         }
                     }
                     else
                     {
-                        this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
-                        this.errorBox.Visible = true;
+                        this.ErrorNotifierControl.ErrorMessageText = "Only JPEG or PNG files are accepted!";
+                        this.ErrorNotifierControl.Visible = true;
                         return;
                     }
                 }
+                    //TODO asd
                 catch (Exception ex)
                 {
-                    this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
-                    this.errorBox.Visible = true;
+                    this.ErrorNotifierControl.ErrorMessageText = "Upload status: The file could not be uploaded. " + ex.Message;
+                    this.ErrorNotifierControl.Visible = true;
                     return;
                 }
             }

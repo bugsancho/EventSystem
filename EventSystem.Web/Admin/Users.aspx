@@ -3,12 +3,9 @@ AutoEventWireup="true"
 CodeBehind="Users.aspx.cs" 
 Inherits="EventSystem.Web.Admin.Users" 
 MasterPageFile="~/Site.Master" %>
-
+<%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <p class="alert alert-danger" id="errorBox" runat="server">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <asp:Literal runat="server" ID="ErrorMessage" />
-    </p>
+     <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>
 
     <h2 class="text-center">All users</h2>
     <br />

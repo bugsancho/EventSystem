@@ -1,9 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateVenue.aspx.cs" Inherits="EventSystem.Web.Venue.CreateVenue" %>
+<%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 <asp:Content ID="ContentCreateVenue" ContentPlaceHolderID="MainContent" runat="server">
-    <p class="alert alert-danger" id="errorBox" runat="server">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <asp:Literal runat="server" ID="ErrorMessage" />
-    </p>
+     <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>
 
     <div class="form-horizontal">
         <h4>Create a new venue</h4>
@@ -29,7 +27,7 @@
             <asp:Label runat="server" AssociatedControlID="AvailableSeats" CssClass="col-md-2 control-label">Available seats</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="AvailableSeats" CssClass="form-control" />
-                <asp:RangeValidator runat="server" Type="Integer" MinimumValue="1" MaximumValue="4000" ControlToValidate="AvailableSeats" ErrorMessage="The available seats field must be number between 1 and 10000" /><br />
+                <asp:RangeValidator runat="server" Type="Integer" MinimumValue="1" MaximumValue="100000" ControlToValidate="AvailableSeats" ErrorMessage="The available seats field must be number between 1 and 100000" /><br />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="AvailableSeats"
                   CssClass="text-danger" ErrorMessage="The available seats field is required." />
             </div>

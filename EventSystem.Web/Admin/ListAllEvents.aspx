@@ -1,10 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListAllEvents.aspx.cs" Inherits="EventSystem.Web.Event.ListAllEvents" %>
-
+<%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <p class="alert alert-danger" id="errorBox" runat="server">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <asp:Literal runat="server" ID="ErrorMessage" />
-    </p>
+     <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>
 
     <h2 class="text-center">All events</h2>
     <br />

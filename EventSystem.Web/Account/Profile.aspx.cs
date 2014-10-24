@@ -18,7 +18,7 @@ namespace EventSystem.Web.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.errorBox.Visible = false;
+            this.ErrorNotifierControl.Visible = false;
 
             var requestUserId = this.Request["id"];
             if (requestUserId != null && !(this.User.Identity.IsAuthenticated && this.LoggedUser.Id == requestUserId))
@@ -81,22 +81,22 @@ namespace EventSystem.Web.Account
                         }
                         else
                         {
-                            this.ErrorMessage.Text = "The file has to be less than 500 kb!";
-                            this.errorBox.Visible = true;
+                            this.ErrorNotifierControl.ErrorMessageText = "The file has to be less than 500 kb!";
+                            this.ErrorNotifierControl.Visible = true;
                             return;
                         }
                     }
                     else
                     {
-                        this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
-                        this.errorBox.Visible = true;
+                        this.ErrorNotifierControl.ErrorMessageText = "Only JPEG or PNG files are accepted!";
+                        this.ErrorNotifierControl.Visible = true;
                         return;
                     }
                 }
                 catch (Exception ex)
                 {
-                    this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
-                    this.errorBox.Visible = true;
+                    this.ErrorNotifierControl.ErrorMessageText = "Upload status: The file could not be uploaded. " + ex.Message;
+                    this.ErrorNotifierControl.Visible = true;
                     return;
                 }
             }
@@ -157,22 +157,22 @@ namespace EventSystem.Web.Account
                         }
                         else
                         {
-                            this.ErrorMessage.Text = "The file has to be less than 500 kb!";
-                            this.errorBox.Visible = true;
+                            this.ErrorNotifierControl.ErrorMessageText = "The file has to be less than 500 kb!";
+                            this.ErrorNotifierControl.Visible = true;
                             return;
                         }
                     }
                     else
                     {
-                        this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
-                        this.errorBox.Visible = true;
+                        this.ErrorNotifierControl.ErrorMessageText = "Only JPEG or PNG files are accepted!";
+                        this.ErrorNotifierControl.Visible = true;
                         return;
                     }
                 }
                 catch (Exception ex)
                 {
-                    this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
-                    this.errorBox.Visible = true;
+                    this.ErrorNotifierControl.ErrorMessageText = "Upload status: The file could not be uploaded. " + ex.Message;
+                    this.ErrorNotifierControl.Visible = true;
                     return;
                 }
             }
@@ -233,22 +233,22 @@ namespace EventSystem.Web.Account
                         }
                         else
                         {
-                            this.ErrorMessage.Text = "The file has to be less than 500 kb!";
-                            this.errorBox.Visible = true;
+                            this.ErrorNotifierControl.ErrorMessageText = "The file has to be less than 500 kb!";
+                            this.ErrorNotifierControl.Visible = true;
                             return;
                         }
                     }
                     else
                     {
-                        this.ErrorMessage.Text = "Only JPEG or PNG files are accepted!";
-                        this.errorBox.Visible = true;
+                        this.ErrorNotifierControl.ErrorMessageText = "Only JPEG or PNG files are accepted!";
+                        this.ErrorNotifierControl.Visible = true;
                         return;
                     }
                 }
                 catch (Exception ex)
                 {
-                    this.ErrorMessage.Text = "Upload status: The file could not be uploaded. " + ex.Message;
-                    this.errorBox.Visible = true;
+                    this.ErrorNotifierControl.ErrorMessageText = "Upload status: The file could not be uploaded. " + ex.Message;
+                    this.ErrorNotifierControl.Visible = true;
                     return;
                 }
             }

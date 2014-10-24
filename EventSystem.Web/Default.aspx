@@ -9,6 +9,8 @@
     <div class="text-center">
         <asp:Label ID="ActiveEvents" CssClass="alert alert-success " runat="server"></asp:Label>
     </div>
+    <br />  
+    <br />
     <div class="container row">
         <div class="col-md-6">
             <div class="panel panel-primary">

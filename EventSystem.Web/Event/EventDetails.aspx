@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EventDetails.aspx.cs" Inherits="EventSystem.Web.Event.EventDetails" %>
+<%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+     <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>
     <asp:Panel ID="EventContent" runat="server" CssClass="row">
         <asp:Image ID="Image1" runat="server" CssClass="col-md-4" />
         <asp:Panel ID="Panel1" runat="server" CssClass="col-md-8">
@@ -25,7 +27,7 @@
             </asp:DetailsView>
         </asp:Panel>
         <asp:Panel runat="server" CssClass="text-center">
-            <asp:Button  runat="server" ID="JoinEventBtn" OnClick="JoinEventBtn_Click" Text="Join" CssClass="btn btn-default"/>
+            <asp:Button  runat="server" ID="JoinEventBtn" OnClick="JoinEventBtn_Click" Text="Reserve Ticket" CssClass="btn btn-default"/>
             <asp:TextBox runat="server" Id="TextBoxComment" TextMode="MultiLine" CssClass="form-control"/>
             <asp:Button Text="Comment" runat="server" id="BtnSubmitComment" CssClass="btn btn-info" OnClick="BtnSubmitComment_Click"/>
         </asp:Panel>

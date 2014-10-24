@@ -1,8 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListAllVenuesPublic.aspx.cs" Inherits="EventSystem.Web.Venues.ListAllVenuesPublic" %>
+<%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 
 <%@ Register TagPrefix="My" TagName="UserInfoBoxControl" Src="~/Controls/ImageTile.ascx" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+     <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>
     <div class="text-center">
         <asp:Label Text="Search: " AssociatedControlID="TextBoxSearch" runat="server" />
         <asp:TextBox runat="server" ID="TextBoxSearch" />
