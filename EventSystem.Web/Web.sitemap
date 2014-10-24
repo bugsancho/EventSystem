@@ -3,17 +3,17 @@
   <siteMapNode title="Home" description="Home Page" url="~/Default.aspx">
     <siteMapNode title="About" description="About Page" url="~/About.aspx" />
     <siteMapNode title="Admin" description="Site administration" roles="admin">
-      <siteMapNode title="Users" description="Administer users" url="~/Admin/Users.aspx"/>
+      <siteMapNode title="All Registered Users" description="Administer users" url="~/Admin/Users.aspx"/>
       <siteMapNode title="All Events" description="All registered events" url="~/Admin/ListAllEvents.aspx"/>
       <siteMapNode title="All Venues" description="All registered venues" url="~/Admin/ListAll.aspx"/>
     </siteMapNode>
     <siteMapNode title="Events" description="Site administration" roles="admin">
       <siteMapNode title="Create" description="Create a new event" url="~/Event/CreateEvent.aspx"/>
-      <siteMapNode title="All Events" description="List all events public" url="~/Event/ListAllEventsPublic.aspx"/>
+      <siteMapNode title="All Public Events" description="List all events public" url="~/Event/ListAllEventsPublic.aspx"/>
     </siteMapNode>
     <siteMapNode title="Venues" description="Site administration" roles="admin">
       <siteMapNode title="Create" description="Register a new venue" url="~/Venues/CreateVenue.aspx"/>
-      <siteMapNode title="All Venues" description="List all venues public" url="~/Venues/ListAllVenuesPublic.aspx"/>
+      <siteMapNode title="All Public Venues" description="List all venues public" url="~/Venues/ListAllVenuesPublic.aspx"/>
     </siteMapNode>
   </siteMapNode>
 </siteMap>
