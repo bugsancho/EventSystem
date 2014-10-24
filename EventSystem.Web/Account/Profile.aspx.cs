@@ -106,6 +106,7 @@ namespace EventSystem.Web.Account
                 this.Data.SaveChanges();
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
             }
+            Response.Redirect(Request.RawUrl);
         }
 
         // The return type can be changed to IEnumerable, however to support
@@ -130,6 +131,7 @@ namespace EventSystem.Web.Account
             {
                 // The item wasn't found
                 ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
+                Response.Redirect(Request.RawUrl);
                 return;
             }
 
@@ -159,6 +161,7 @@ namespace EventSystem.Web.Account
                         {
                             this.ErrorNotifierControl.ErrorMessageText = "The file has to be less than 500 kb!";
                             this.ErrorNotifierControl.Visible = true;
+                            Response.Redirect(Request.RawUrl);
                             return;
                         }
                     }
@@ -166,6 +169,7 @@ namespace EventSystem.Web.Account
                     {
                         this.ErrorNotifierControl.ErrorMessageText = "Only JPEG or PNG files are accepted!";
                         this.ErrorNotifierControl.Visible = true;
+                        Response.Redirect(Request.RawUrl);
                         return;
                     }
                 }
@@ -173,6 +177,7 @@ namespace EventSystem.Web.Account
                 {
                     this.ErrorNotifierControl.ErrorMessageText = "Upload status: The file could not be uploaded. " + ex.Message;
                     this.ErrorNotifierControl.Visible = true;
+                    Response.Redirect(Request.RawUrl);
                     return;
                 }
             }
@@ -182,6 +187,7 @@ namespace EventSystem.Web.Account
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
                 this.Data.SaveChanges();
             }
+            Response.Redirect(Request.RawUrl);
         }
 
         // The return type can be changed to IEnumerable, however to support

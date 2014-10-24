@@ -12,6 +12,7 @@ namespace EventSystem.Web.Event
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.ErrorNotifierControl.Visible = false;
         }
 
         public IQueryable<EventSystem.Models.Event> ListView1_GetData()

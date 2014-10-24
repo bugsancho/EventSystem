@@ -49,6 +49,7 @@
             {
                 this.Data.SaveChanges();
             }
+            Response.Redirect(Request.RawUrl);
         }
 
         public void ListViewEvents_DeleteItem(int id)
@@ -62,6 +63,7 @@
                 return;
             }
             DeletionHelper.DeleteEvent(item.Id);
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

@@ -13,6 +13,15 @@ namespace EventSystem.Web.Event {
     public partial class ListAllEventsPublic {
         
         /// <summary>
+        /// ErrorNotifierControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::EventSystem.Web.Controls.ErrorNotifier ErrorNotifierControl;
+        
+        /// <summary>
         /// TextBoxSearch control.
         /// </summary>
         /// <remarks>

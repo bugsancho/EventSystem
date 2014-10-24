@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListAllVenuesPublic.aspx.cs" Inherits="EventSystem.Web.Venues.ListAllVenuesPublic" %>
+﻿<%@ Page Title="All Venues Public" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListAllVenuesPublic.aspx.cs" Inherits="EventSystem.Web.Venues.ListAllVenuesPublic" %>
 <%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 
 <%@ Register TagPrefix="My" TagName="UserInfoBoxControl" Src="~/Controls/ImageTile.ascx" %>

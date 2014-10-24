@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" 
+    Title="All Registered Users"
 AutoEventWireup="true" 
 CodeBehind="Users.aspx.cs" 
 Inherits="EventSystem.Web.Admin.Users" 

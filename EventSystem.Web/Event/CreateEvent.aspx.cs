@@ -15,13 +15,20 @@ namespace EventSystem.Web.Event
         protected void Page_Load(object sender, EventArgs e)
         {
             this.ErrorNotifierControl.Visible = false;
+            if (this.LoggedUser.Venues.Count() <= 0)
+            {
+                this.ErrorNotifierControl.Visible = true;
+                this.CreateEventPageContent.Visible = false;
+
+                this.ErrorNotifierControl.ErrorMessageText = "You don't have any venues registered yet!";
+            }
         }
 
         public void CreateEvent_Click(object sender, EventArgs e)
         {
             const string ImagePath = "/Content/Images/Event/";
             string imageUrl = "";
-
+            
             try
             {
                 if (FileUploadControl.PostedFile.ContentType == "image/jpeg" ||
@@ -61,11 +68,13 @@ namespace EventSystem.Web.Event
                         newEvent = this.Data.Events.All().FirstOrDefault(ev => ev.Id == id);
                         newEvent.ImageUrl = imageUrl;
                         this.Data.SaveChanges();
+                        Response.Redirect(Request.RawUrl);
                     }
                     else
                     {
                         this.ErrorNotifierControl.ErrorMessageText = "The file has to be less than 500 kb!";
                         this.ErrorNotifierControl.Visible = true;
+                        Response.Redirect(Request.RawUrl);
                         return;
                     }
                 }
@@ -73,6 +82,7 @@ namespace EventSystem.Web.Event
                 {
                     this.ErrorNotifierControl.ErrorMessageText = "Only JPEG or PNG files are accepted!";
                     this.ErrorNotifierControl.Visible = true;
+                    Response.Redirect(Request.RawUrl);
                     return;
                 }
             }
@@ -80,6 +90,7 @@ namespace EventSystem.Web.Event
             {
                 this.ErrorNotifierControl.ErrorMessageText = "Error while trying to create new event: " + ex.Message;
                 this.ErrorNotifierControl.Visible = true;
+                Response.Redirect(Request.RawUrl);
                 return;
             }
 

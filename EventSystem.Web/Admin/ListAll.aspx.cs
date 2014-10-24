@@ -52,6 +52,7 @@ namespace EventSystem.Web.Venues
             {
                 this.Data.SaveChanges();
             }
+            Response.Redirect(Request.RawUrl);
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
@@ -67,6 +68,7 @@ namespace EventSystem.Web.Venues
                 return;
             }
             DeletionHelper.DeleteVenue(item.Id);
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

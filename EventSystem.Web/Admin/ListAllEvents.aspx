@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListAllEvents.aspx.cs" Inherits="EventSystem.Web.Event.ListAllEvents" %>
+﻿<%@ Page Title="All Events" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListAllEvents.aspx.cs" Inherits="EventSystem.Web.Event.ListAllEvents" %>
 <%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>

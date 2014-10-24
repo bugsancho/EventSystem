@@ -12,7 +12,7 @@ namespace EventSystem.Web.Venues
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.ErrorNotifierControl.Visible = false;
         }
 
         public IQueryable<EventSystem.Models.Venue> ListView1_GetData()

@@ -42,6 +42,7 @@ namespace EventSystem.Web.Admin
 
             this.Data.Users.Delete(item);
             this.Data.SaveChanges();
+            Response.Redirect(Request.RawUrl);
         }
 
         public void ListView1_UpdateItem(string id)
@@ -59,6 +60,7 @@ namespace EventSystem.Web.Admin
             {
                 this.Data.SaveChanges();
             }
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

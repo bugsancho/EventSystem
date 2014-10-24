@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateEvent.aspx.cs" Inherits="EventSystem.Web.Event.CreateEvent" %>
+﻿<%@ Page  Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateEvent.aspx.cs" Inherits="EventSystem.Web.Event.CreateEvent" %>
 <%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 <asp:Content ID="ContentCreateEvent" ContentPlaceHolderID="MainContent" runat="server">
      <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>
 
-    <div>
+    <div runat="server" id="CreateEventPageContent">
         <h4>Create a new event</h4>
         <hr />
 

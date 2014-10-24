@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateVenue.aspx.cs" Inherits="EventSystem.Web.Venue.CreateVenue" %>
+﻿<%@ Page Title="Create New Venue" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateVenue.aspx.cs" Inherits="EventSystem.Web.Venue.CreateVenue" %>
 <%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 <asp:Content ID="ContentCreateVenue" ContentPlaceHolderID="MainContent" runat="server">
      <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>

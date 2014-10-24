@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="EventSystem.Web.Account.Profile" %>
+﻿<%@ Page Title="UserProfile" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="EventSystem.Web.Account.Profile" %>
 <%@ Register TagPrefix="My" TagName="ErrorNotifier" Src="~/Controls/ErrorNotifier.ascx" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
      <My:ErrorNotifier runat="server" ID="ErrorNotifierControl"/>
@@ -69,7 +69,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><b>Available seats</b></td>
+                    <td>Phone number</td>
                     <td>
                         <asp:TextBox ID="TextBoxPhoneNumber"
                             runat="server"

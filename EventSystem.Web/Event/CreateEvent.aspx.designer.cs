@@ -22,6 +22,15 @@ namespace EventSystem.Web.Event {
         protected global::EventSystem.Web.Controls.ErrorNotifier ErrorNotifierControl;
         
         /// <summary>
+        /// CreateEventPageContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CreateEventPageContent;
+        
+        /// <summary>
         /// Title control.
         /// </summary>
         /// <remarks>
